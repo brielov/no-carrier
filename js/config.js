@@ -138,8 +138,36 @@ export const CONFIG = {
     headsLoadedAt: 0.82, // when in the spin-up recording the heads load
     tapeGapSec: 0.27,
     tapeClunkLevel: 0.7,
+    reportDelaySec: 2.5, // after the receiver comes up, the printer prints the daily report
     outsideRiseTc: 1.2,
     outsideFallTc: 0.9,
+  },
+
+  // The story. See docs/STORY.md before changing anything here.
+  story: {
+    halcyonDay: 4398, // the mission day on your first visit; it advances with the calendar
+    homeSilentSince: 3690, // the mission day home stopped answering; Relay Lima counts from here
+    // How often each voice is picked, relative to 1. The ground is meant to be rare.
+    speakerWeights: { ground: 0.15, wren: 0.15, control: 0.6, lima: 0.8 },
+    attemptsBefore: 8421, // calls the Halcyon made before your first visit; each scan adds one
+    unheardBias: 0.7, // chance of picking a broadcast you haven't heard to the end yet
+    recentShare: 0.5, // this share of broadcasts must play before one repeats
+    // Rare notes in the system log, from the Halcyon's side.
+    notes: {
+      meanIdleSec: 720,
+      minIdleSec: 240,
+      lines: [
+        'HALCYON DAY {day}',
+        'RELAY LIMA: NO TRAFFIC {lima} DAYS',
+        'DAYS SINCE LAST CONTACT WITH HOME: {lima}',
+        'MERIDIAN TRANSMISSIONS LOGGED: {heard} OF {total}',
+        'OPERATOR NOTE: LAMPS ON',
+        'OPERATOR NOTE: FAN 2 BEARING CHECKED',
+        'BEACON 6.204 MHZ: STILL TRANSMITTING',
+        'HOLDING POSITION. ALL SYSTEMS NOMINAL',
+        'COMMUNICATION ATTEMPTS {attempts}. SUCCESSFUL CONTACTS 0',
+      ],
+    },
   },
 
   scheduler: {
@@ -627,6 +655,25 @@ export const CONFIG = {
     // over 10 s or more, parallel whistles when tuning, Morse near 1.1 kHz at
     // 15 wpm, and teleprinter tones 170 Hz apart. meanIdleSec values are at
     // the middle of the RATE knob.
+    hull: {
+      label: 'HULL',
+      defaultLevel: 0.5,
+      maxGain: 1,
+      width: 0.85, // how far round you the sounds can come from
+      ticks: {
+        meanIdleSec: 80,
+        minIdleSec: 20,
+        count: { min: 1, max: 6 },
+        gapSec: { min: 0.4, max: 3.5 },
+        gain: 0.45,
+      },
+      creaks: {
+        meanIdleSec: 260,
+        minIdleSec: 70,
+        gain: 0.6,
+      },
+    },
+
     signal: {
       label: 'RECEIVER',
       defaultLevel: 0.5,
@@ -712,12 +759,18 @@ export const CONFIG = {
         trailSec: 0.5,
       },
       morse: {
-        // The Meridian's own traffic, keyed properly so it can be read by ear.
+        // The Meridian's own traffic, keyed by Ezra so it can be read by ear.
         // Ham shorthand: CQ = calling anyone, DE = from, K = go ahead,
         // QRZ = who is calling me, = marks a break, 73 = best regards.
         storyChance: 0.5, // otherwise another station
         fromStartChance: 0.65, // otherwise you catch it partway in
+        meridianDah: 3.7, // Ezra's dahs, in dits; standard is 3
         messages: [
+          'HALCYON DE MERIDIAN = EZRA HERE K',
+          'CQ EARTH CQ EARTH DE MERIDIAN K',
+          'ANY STATION ANY STATION QRV? K',
+          'LIGHTHOUSE STILL BURNING = 73',
+          'TWO VOICES BETTER THAN ONE K',
           'CQ CQ CQ DE MERIDIAN MERIDIAN K',
           'QRZ QRZ DE MERIDIAN K',
           'ANY STATION ANY STATION DE MERIDIAN = PSE QSL K',

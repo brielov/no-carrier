@@ -20,7 +20,8 @@ export class SampleBank {
     }
     await Promise.all(
       Object.entries(manifest).map(async ([layer, entries]) => {
-        const loaded = await Promise.all(entries.map((entry) => this.decode(entry)));
+        // Lazy entries are listed now and fetched the first time they play.
+        const loaded = await Promise.all(entries.map((entry) => (entry.lazy ? { ...entry } : this.decode(entry))));
         this.layers.set(layer, loaded.filter(Boolean));
       }),
     );
@@ -34,6 +35,16 @@ export class SampleBank {
     } catch {
       return null;
     }
+  }
+
+  // Make sure a lazy entry has its audio. Resolves to false if it can't load.
+  async ready(entry) {
+    if (entry.buffer) return true;
+    entry.loading ??= this.decode(entry).then((loaded) => {
+      entry.buffer = loaded?.buffer;
+      return Boolean(entry.buffer);
+    });
+    return entry.loading;
   }
 
   // Entries for a layer matching every given field, e.g. { unit: 'A' }.

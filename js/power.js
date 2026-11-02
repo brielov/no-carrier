@@ -57,6 +57,7 @@ export class PowerSequence {
     });
     this.step(time, steps.hum, (at) => {
       this.layer('hum')?.switchPower(1, at, cfg.humRiseTc);
+      this.layer('hull')?.switchPower(1, at, 0.001);
       engine.report('POWER BUS ONLINE');
     });
     this.step(time, steps.display, (at) => {
@@ -97,6 +98,8 @@ export class PowerSequence {
       }
       engine.operating = true;
       engine.report('RECEIVER ONLINE');
+      engine.story.greet(at + 0.6);
+      engine.story.dailyReport(at + cfg.reportDelaySec);
     });
   }
 

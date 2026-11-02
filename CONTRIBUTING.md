@@ -36,6 +36,13 @@ place to look.
 Trim silence at the edges, keep levels consistent with similar files, and avoid
 fades on mechanical sounds: real machines start and stop abruptly.
 
+## Writing transmissions
+
+New story messages are welcome. Read [docs/STORY.md](docs/STORY.md) first:
+keep each one short, in one character's voice, calm, and mostly ordinary life.
+Open an issue with the text and the character; the voices are generated
+separately so they stay consistent.
+
 ## Reporting a problem
 
 Open an issue with your browser and operating system, what you heard or saw,

@@ -20,15 +20,17 @@ export class PrinterLayer extends Layer {
     return { PRINT: (time) => this.print(time) };
   }
 
-  print(time) {
+  // `report`, if given, is text to log line by line as the paper comes out.
+  print(time, { document = pick(this.cfg.documents), report } = {}) {
     if (this.busy) return;
     this.busy = true;
-    this.event(time, `PRINTING ${pick(this.cfg.documents)}...`);
+    this.event(time, `PRINTING ${document}...`);
     const lines = this.engine.samples.find('printer', { kind: 'line' });
     if (lines.length) {
-      this.printLines(time, lines);
+      this.printLines(time, lines, report);
       return;
     }
+    report?.forEach((text, index) => this.event(time + index * 0.8, text));
     const seconds = this.printSynth(time);
     this.scheduler.at(time + seconds, (end) => {
       this.busy = false;
@@ -37,7 +39,7 @@ export class PrinterLayer extends Layer {
   }
 
   // Line after line of real printing, with the head returning in the gaps.
-  printLines(time, lines) {
+  printLines(time, lines, report) {
     const { sample } = this.cfg;
     const { gain, pitchVary, feedGain } = sample;
     const take = pick(lines);
@@ -46,11 +48,12 @@ export class PrinterLayer extends Layer {
     const pitch = rand(1 - pitchVary, 1 + pitchVary);
     const level = gain * rand(0.85, 1.1);
     const gap = () => length + randRange(sample.returnSec);
-    const line = (at) => {
+    const line = (at, index) => {
+      if (report?.[index]) this.event(at, report[index]);
       length = this.playSample(at, pick(family), { gain: level, pitch, dest: this.dest });
       this.hit(at + length + 0.02, 'clunk', { gain: feedGain, pitch: 1.5, dest: this.dest });
     };
-    this.series(time, randInt(sample.lines), gap, line, (at) => {
+    this.series(time, report ? report.length : randInt(sample.lines), gap, line, (at) => {
       this.scheduler.at(at + length + 0.1, (end) => {
         this.busy = false;
         this.event(end, 'PRINT JOB COMPLETE');

@@ -13,6 +13,10 @@ dependencies and no build step.
 
 **Listen: <https://no-carrier.pages.dev>** (headphones recommended)
 
+There is a story in here, told only in fragments, for anyone who keeps
+listening. If you would rather read it than hear it,
+[it is written down](docs/STORY.md), with spoilers.
+
 ## Run it locally
 
 ```sh
@@ -67,6 +71,8 @@ in that file. Press **DEFAULT** to return to the values in `js/config.js`.
 | `js/layers/` | One module per sound layer; `signal.js` is the receiver and `radio.js` what it picks up |
 | `js/effects.js` | Distance, Age, placement, compressor and limiter |
 | `js/power.js` | Power on and off sequences |
+| `js/story.js` | The Halcyon's day count, log notes and broadcast archive |
+| `docs/STORY.md` | The story bible (spoilers) |
 | `js/director.js` | Crossfades, Auto Drift, sleep timer |
 | `js/presets.js` | Preset definitions |
 | `js/settings.js` | Saving, validating and exporting settings |
@@ -95,8 +101,9 @@ of machine, `model` is an id from that layer's `models` in `js/config.js`.
 | `tape` | `shuttle` |
 | `printer` | `line`, one whole printed line per file |
 | `modem` | `handshake`, `data` |
-| `signal` | `morse`, `data`, `carrier`, `broadcast` (with its words in `text`) |
+| `signal` | `morse`, `data`, `carrier`, `broadcast` (with `speaker` and its words in `text`; `lazy` files load when first played) |
 | `power` | the sounds of the power sequence, named in `js/power.js` |
+| `hull` | `tick`, `creak` |
 
 Use mono or stereo WAV at any sample rate. To find more, search
 [freesound.org](https://freesound.org) and filter by Creative Commons 0.
@@ -109,6 +116,8 @@ Use mono or stereo WAV at any sample rate. To find more, search
 | `drive/st277n-*` | [1980s Seagate ST277N 63MB SCSI hard drive](https://freesound.org/s/475216/) by jodybruchon | CC0 |
 | `drive/caviar-*` | [Caviar 32500](https://freesound.org/s/116033/) by galeku | CC0 |
 | `drive/recal-02.wav` | [Hard Drive 7200RPM Spin Up, Idle and Spin Down](https://freesound.org/s/465592/) by conath | CC0 |
+| `hull/tick-*` | [Clicking Engine Cooldown](https://freesound.org/s/539514/) by CmdRobot | CC0 |
+| `hull/creak-*` | [Foley_Object_Metal_Oven_Creaks_Mono](https://freesound.org/s/585734/) by Nox_Sound | CC0 |
 | `drive/vintage-*` | [Vintage Hard Drive Read and Idle](https://freesound.org/s/493891/) by Crinkem | CC0 |
 | `printer/line-a-*` | [dot matrix printer](https://freesound.org/s/320008/) by DisasterServices | CC0 |
 | `printer/line-b-*` | [old dot-matrix printer](https://freesound.org/s/181420/) by viertelnachvier | CC0 |
@@ -129,7 +138,7 @@ Use mono or stereo WAV at any sample rate. To find more, search
 | `signal/morse-*` | [Radio transmission morse code @4606.2kHz Poland](https://freesound.org/s/343740/) by NebulousRoyale | CC0 |
 | `signal/data-*` | [14081.60 kHz USB RTTY](https://freesound.org/s/241327/) by Trebblofang | CC0 |
 | `signal/carrier-*` | [G32-19 Short Wave Radio](https://freesound.org/s/438503/) by craigsmith | CC0 |
-| `signal/broadcast-*` | Original messages voiced with [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), then degraded | Apache-2.0 model |
+| `signal/broadcast-*` | Original messages from the story, voiced with [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), then degraded | Apache-2.0 model |
 
 The CC0 clips were cut from Freesound's high-quality previews and processed:
 trimmed, cleaned of room noise between events, and levelled. The broadcast

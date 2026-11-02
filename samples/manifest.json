@@ -1206,51 +1206,437 @@
     },
     {
       "file": "signal/broadcast-survey.wav",
-      "model": "real",
       "kind": "broadcast",
+      "speaker": "beacon",
+      "lazy": true,
       "text": "This is the survey vessel Meridian. We are holding position, and all systems are nominal. If you can hear this, please respond. This message repeats."
     },
     {
-      "file": "signal/broadcast-listening.wav",
-      "model": "real",
-      "kind": "broadcast",
-      "text": "If there is anybody out there, you are not alone. We are still listening on this frequency. We will keep listening."
-    },
-    {
-      "file": "signal/broadcast-automated.wav",
-      "model": "real",
-      "kind": "broadcast",
-      "text": "This is an automated message. The crew of the Meridian is well. We have light, and air, and time. If you receive this, answer on any channel."
-    },
-    {
-      "file": "signal/broadcast-here.wav",
-      "model": "real",
-      "kind": "broadcast",
-      "text": "To anyone receiving this signal. My name does not matter. I just wanted someone to know that we were here."
-    },
-    {
-      "file": "signal/broadcast-lamps.wav",
-      "model": "real",
-      "kind": "broadcast",
-      "text": "Day four thousand and twelve. Nothing to report. The lamps are on. We are leaving the lamps on for you."
-    },
-    {
       "file": "signal/broadcast-calling.wav",
-      "model": "real",
       "kind": "broadcast",
+      "speaker": "beacon",
+      "lazy": true,
       "text": "Calling any station. Calling any station. This is Meridian. We hear nothing, but we keep calling. Over."
     },
     {
-      "file": "signal/broadcast-stars.wav",
-      "model": "real",
+      "file": "signal/broadcast-beacon.wav",
       "kind": "broadcast",
+      "speaker": "beacon",
+      "lazy": true,
+      "text": "This beacon will transmit for as long as there is power. It is a quiet place. Come and find us, if you can."
+    },
+    {
+      "file": "signal/broadcast-lighthouse-relay.wav",
+      "kind": "broadcast",
+      "speaker": "beacon",
+      "lazy": true,
+      "text": "Meridian, automated. Now relaying a second station. Its message follows. We are here. We are still here."
+    },
+    {
+      "file": "signal/broadcast-quiet.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "Meridian, commander's log, day three thousand nine hundred and two. We have crossed into the Quiet. Radio is soft here, like talking under a blanket. All crew well."
+    },
+    {
+      "file": "signal/broadcast-humming.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "Day three thousand nine hundred and forty. The signal is stronger now. Sato thinks it has a shape. I think it sounds like someone humming."
+    },
+    {
+      "file": "signal/broadcast-hold.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "Halcyon, if this reaches you, we are going to hold here for a while. Do not worry. It is calm, and the coffee is holding out."
+    },
+    {
+      "file": "signal/broadcast-found.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "Day four thousand and nine. We found where the signal comes from. It is a relay, like yours. Very old. Still running."
+    },
+    {
+      "file": "signal/broadcast-stay.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "We have decided to stay with it. Someone should. It has kept its lights on for a very long time."
+    },
+    {
+      "file": "signal/broadcast-sunday.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "It is Sunday, by our count. Vey made pancakes. They were not good. Everyone had seconds."
+    },
+    {
+      "file": "signal/broadcast-all-right.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "This is Meridian. We are well. We are not coming back, and that is all right. Keep listening, Halcyon. We will."
+    },
+    {
+      "file": "signal/broadcast-automated.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "This is an automated message. The crew of the Meridian is well. We have light, and air, and time. If you receive this, answer on any channel."
+    },
+    {
+      "file": "signal/broadcast-stars.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
       "text": "If this reaches you, and we are gone, know that the stars were beautiful out here. End of message."
     },
     {
-      "file": "signal/broadcast-beacon.wav",
-      "model": "real",
+      "file": "signal/broadcast-bearing.wav",
       "kind": "broadcast",
-      "text": "This beacon will transmit for as long as there is power. It is a quiet place. Come and find us, if you can."
+      "speaker": "vey",
+      "lazy": true,
+      "text": "Vey here. Replaced the bearing in fan two again. If anyone out there has a spare, we will trade you for jokes. We have plenty."
+    },
+    {
+      "file": "signal/broadcast-reactor.wav",
+      "kind": "broadcast",
+      "speaker": "vey",
+      "lazy": true,
+      "text": "Power is good. The reactor will outlast all of us. That is not a complaint. Vey out."
+    },
+    {
+      "file": "signal/broadcast-printer.wav",
+      "kind": "broadcast",
+      "speaker": "vey",
+      "lazy": true,
+      "text": "Day three thousand nine hundred and sixty. I taught the printer to play a tune. The commander has asked me to stop."
+    },
+    {
+      "file": "signal/broadcast-bolts.wav",
+      "kind": "broadcast",
+      "speaker": "vey",
+      "lazy": true,
+      "text": "The old relay out here was built like ours. Same bolts. Same paint. Somebody, a long time ago, made the same choices we did."
+    },
+    {
+      "file": "signal/broadcast-right.wav",
+      "kind": "broadcast",
+      "speaker": "vey",
+      "lazy": true,
+      "text": "If this is the last thing anyone hears from us, I would like it noted that I was right about the fan."
+    },
+    {
+      "file": "signal/broadcast-forty-one.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "Survey note. The signal repeats every forty one minutes. It never repeats exactly. I find that comforting, and I cannot say why."
+    },
+    {
+      "file": "signal/broadcast-still-here.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "Sato, day three thousand nine hundred and ninety. The message in the signal is simple. We are here. We are still here. That is all it says."
+    },
+    {
+      "file": "signal/broadcast-rain.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "I have been listening to it while I sleep. It sounds like rain on a roof, if the roof were very far away."
+    },
+    {
+      "file": "signal/broadcast-plants.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "There are plants in the relay, still alive under the lamps. Someone has been taking care of them. Or the machines have."
+    },
+    {
+      "file": "signal/broadcast-name.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "I named the relay. It seemed rude not to. I call it the Lighthouse."
+    },
+    {
+      "file": "signal/broadcast-two-voices.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "Day four thousand and eleven. We are sending the Lighthouse message along with ours now. Two voices are better than one."
+    },
+    {
+      "file": "signal/broadcast-listening.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "If there is anybody out there, you are not alone. We are still listening on this frequency. We will keep listening."
+    },
+    {
+      "file": "signal/broadcast-lamps.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "Day four thousand and twelve. Nothing to report. The lamps are on. We are leaving the lamps on for you."
+    },
+    {
+      "file": "signal/broadcast-one-sided.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "Halcyon, it's Ezra. I know the delay makes this one sided. I just like knowing you might hear it."
+    },
+    {
+      "file": "signal/broadcast-long-dahs.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "Hey, Halcyon. Ezra again. I keyed you some Morse, in case the voice channel fades. You will know it's me. I send my dahs too long."
+    },
+    {
+      "file": "signal/broadcast-see-us.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "Ezra here. We left the lamps on. If you ever come this way, you will see us from a long way off."
+    },
+    {
+      "file": "signal/broadcast-counted.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "I counted the days you have been out there. It is more than us. I hope someone keeps you company. If not, we do. Sort of."
+    },
+    {
+      "file": "signal/broadcast-check.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "Halcyon, Meridian. No traffic. Just checking the line. Over."
+    },
+    {
+      "file": "signal/broadcast-static.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "Sometimes I put the receiver on and just listen to the static. I think you do that too."
+    },
+    {
+      "file": "signal/broadcast-here.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "To anyone receiving this signal. My name does not matter. I just wanted someone to know that we were here."
+    },
+    {
+      "file": "signal/broadcast-lima-traffic.wav",
+      "kind": "broadcast",
+      "speaker": "lima",
+      "lazy": true,
+      "text": "Relay Lima, automated. No traffic. Next scheduled contact, pending. Message ends."
+    },
+    {
+      "file": "signal/broadcast-lima-days.wav",
+      "kind": "broadcast",
+      "speaker": "lima",
+      "lazy": true,
+      "text": "This is Relay Lima. No contact with mission control since mission day three thousand six hundred and ninety. Holding. Message ends."
+    },
+    {
+      "file": "signal/broadcast-lima-briefed.wav",
+      "kind": "broadcast",
+      "speaker": "lima",
+      "lazy": true,
+      "text": "Relay Lima to all stations. Please continue as briefed. Message ends."
+    },
+    {
+      "file": "signal/broadcast-control-receiver.wav",
+      "kind": "broadcast",
+      "speaker": "control",
+      "lazy": true,
+      "text": "Halcyon, this is mission control. Hold your position. If you are still listening, keep the receiver running."
+    },
+    {
+      "file": "signal/broadcast-control-write.wav",
+      "kind": "broadcast",
+      "speaker": "control",
+      "lazy": true,
+      "text": "Mission control to Halcyon. Whatever you hear out there, write it down. Someone will want to know."
+    },
+    {
+      "file": "signal/broadcast-control-last.wav",
+      "kind": "broadcast",
+      "speaker": "control",
+      "lazy": true,
+      "text": "Halcyon, mission control. We may lose the link for a while. Whatever happens, keep the receiver running."
+    },
+    {
+      "file": "signal/broadcast-stopped.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "Day three thousand six hundred and ninety. Earth stopped answering today. We will keep the schedule anyway."
+    },
+    {
+      "file": "signal/broadcast-in-case.wav",
+      "kind": "broadcast",
+      "speaker": "adair",
+      "lazy": true,
+      "text": "We do not know who is left. So we keep calling, in case someone is."
+    },
+    {
+      "file": "signal/broadcast-warm.wav",
+      "kind": "broadcast",
+      "speaker": "vey",
+      "lazy": true,
+      "text": "Still nothing from home. I keep the transmitter warm anyway. Habit, I suppose."
+    },
+    {
+      "file": "signal/broadcast-matters.wav",
+      "kind": "broadcast",
+      "speaker": "sato",
+      "lazy": true,
+      "text": "If we are the last ones listening, then listening matters more, not less."
+    },
+    {
+      "file": "signal/broadcast-glad.wav",
+      "kind": "broadcast",
+      "speaker": "ezra",
+      "lazy": true,
+      "text": "Halcyon, if it really is just you and us now, I'm glad it's you."
+    },
+    {
+      "file": "signal/broadcast-pacific.wav",
+      "kind": "broadcast",
+      "speaker": "ground",
+      "lazy": true,
+      "text": "This is a recorded message from the Pacific relay. Power is good. The gardens are growing. If anyone can hear this, we are still here."
+    },
+    {
+      "file": "signal/broadcast-shelter.wav",
+      "kind": "broadcast",
+      "speaker": "ground",
+      "lazy": true,
+      "text": "Shelter station nine. Water and power available. All are welcome. This message repeats."
+    },
+    {
+      "file": "signal/broadcast-wren.wav",
+      "kind": "broadcast",
+      "speaker": "wren",
+      "lazy": true,
+      "text": "This is Wren, calling anyone. Anyone at all. We got the greenhouse working. Nice evening. I'll try again tomorrow."
+    },
+    {
+      "file": "signal/broadcast-wren-waved.wav",
+      "kind": "broadcast",
+      "speaker": "wren",
+      "lazy": true,
+      "text": "Wren again. Still just me on this band, I think. The stars are very clear tonight. If you're up there, look down. We waved."
+    }
+  ],
+  "hull": [
+    {
+      "file": "hull/creak-01.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/creak-02.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/creak-03.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/creak-04.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/creak-05.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/creak-06.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/creak-07.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/creak-08.wav",
+      "kind": "creak"
+    },
+    {
+      "file": "hull/tick-01.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-02.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-03.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-04.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-05.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-06.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-07.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-08.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-09.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-10.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-11.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-12.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-13.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-14.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-15.wav",
+      "kind": "tick"
+    },
+    {
+      "file": "hull/tick-16.wav",
+      "kind": "tick"
     }
   ]
 }

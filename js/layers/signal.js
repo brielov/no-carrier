@@ -17,7 +17,7 @@ const randomLetters = () => Array.from({ length: 40 }, () => pick(LETTERS)).join
 // Standard Morse timing: a dah is three dits, a gap between letters three, and
 // between words seven. A slight, human unevenness, but always readable.
 // Returns [start, length] for each key press, up to `until`.
-function morseKeying(text, from, dit, until) {
+function morseKeying(text, from, dit, until, dah = 3) {
   const keying = [];
   let at = from;
   const swing = () => rand(0.95, 1.06);
@@ -28,7 +28,7 @@ function morseKeying(text, from, dit, until) {
       continue;
     }
     for (const mark of MORSE[char] ?? '') {
-      const length = (mark === '.' ? dit : dit * 3) * swing();
+      const length = (mark === '.' ? dit : dit * dah) * swing();
       keying.push([at, length]);
       at += length + dit * swing();
     }
@@ -204,6 +204,7 @@ export class SignalLayer extends Layer {
     const { scan, channel } = this.cfg;
     const seconds = randRange(scan.durationSec);
     this.listen(time, seconds);
+    this.engine.story.attempt();
     const lines = randInt(scan.lines);
     const start = randRange(scan.startHz);
     const slide = randRange(scan.slideHz) * (chance(0.5) ? 1 : -1);
@@ -262,8 +263,21 @@ export class SignalLayer extends Layer {
     if (this.onAir) return;
     const takes = this.engine.samples.find('signal', { kind: 'broadcast' });
     if (!takes.length) return;
+    const take = this.engine.story.choose(takes);
+    this.onAir = true;
+    // Most messages are fetched the first time they play.
+    if (!take.buffer) {
+      this.engine.samples.ready(take).then((ok) => {
+        this.onAir = false;
+        if (ok && this.engine.operating) this.transmit(this.ctx.currentTime + 0.1, take, part);
+      });
+      return;
+    }
+    this.transmit(time, take, part);
+  }
+
+  transmit(time, take, part) {
     const { broadcast, scan } = this.cfg;
-    const take = pick(takes);
     const mhz = dial(scan.bandMHz);
     this.onAir = true;
     part.event(time, `BROADCAST ${mhz} ...`);
@@ -280,6 +294,7 @@ export class SignalLayer extends Layer {
       const total = again();
       this.scheduler.at(time + Math.max(total, seconds), (end) => {
         this.onAir = false;
+        if (!midway) this.engine.story.heard(take.file);
         part.event(end, `${mhz} ... LOST`);
       });
     });
@@ -332,7 +347,9 @@ export class SignalLayer extends Layer {
     const pitch = randRange(morse.pitchHz);
     const seconds = randRange(fragment.durationSec);
     this.listen(time, seconds, part);
-    const keying = morseKeying(meridian ? this.storyText() : randomLetters(), time + rand(0.1, 0.6), dit, time + seconds);
+    // Ezra keys the Meridian's traffic, and he sends his dahs too long.
+    const dah = meridian ? morse.meridianDah : 3;
+    const keying = morseKeying(meridian ? this.storyText() : randomLetters(), time + rand(0.1, 0.6), dit, time + seconds, dah);
 
     const options = { gain: morse.gain, harmonics: morse.harmonics };
     this.voice(time, seconds, options, (osc, key) => {

@@ -5,6 +5,7 @@ import { NoiseBank } from './noise.js';
 import { PowerSequence } from './power.js';
 import { RECIPES } from './recipes.js';
 import { SampleBank } from './samples.js';
+import { Story } from './story.js';
 import { Scheduler } from './scheduler.js';
 import { BroadcastLayer, CarrierLayer, MorseLayer, TeleprinterLayer } from './layers/radio.js';
 import { SignalLayer } from './layers/signal.js';
@@ -12,6 +13,7 @@ import { AirLayer } from './layers/air.js';
 import { BeepLayer } from './layers/beeps.js';
 import { DriveLayer } from './layers/drive.js';
 import { DroneLayer } from './layers/drone.js';
+import { HullLayer } from './layers/hull.js';
 import { HumLayer } from './layers/hum.js';
 import { KeyboardLayer } from './layers/keyboard.js';
 import { ModemLayer } from './layers/modem.js';
@@ -19,7 +21,7 @@ import { PrinterLayer } from './layers/printer.js';
 import { RelayLayer } from './layers/relay.js';
 import { TapeLayer } from './layers/tape.js';
 
-const LAYERS = [HumLayer, AirLayer, DriveLayer, TapeLayer, RelayLayer, KeyboardLayer, BeepLayer, PrinterLayer, ModemLayer, SignalLayer, MorseLayer, TeleprinterLayer, CarrierLayer, BroadcastLayer, DroneLayer];
+const LAYERS = [HumLayer, AirLayer, HullLayer, DriveLayer, TapeLayer, RelayLayer, KeyboardLayer, BeepLayer, PrinterLayer, ModemLayer, SignalLayer, MorseLayer, TeleprinterLayer, CarrierLayer, BroadcastLayer, DroneLayer];
 
 export class Engine {
   constructor(cfg) {
@@ -58,6 +60,7 @@ export class Engine {
     this.flashListeners = new Set();
     this.director = new Director(this);
     this.sequence = new PowerSequence(this);
+    this.story = new Story(this);
   }
 
   // Take settings loaded from storage. Only for use before power on.
@@ -100,6 +103,7 @@ export class Engine {
       }
     }
     this.director.attach();
+    this.story.start();
   }
 
   async powerOn() {

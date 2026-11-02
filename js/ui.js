@@ -22,7 +22,7 @@ const redraws = [];
 const lamps = new Map();
 
 const ZONES = [
-  { id: 'room', name: 'THIS ROOM', layers: ['hum', 'air'] },
+  { id: 'room', name: 'THIS ROOM', layers: ['hum', 'air', 'hull'] },
   { id: 'machines', name: 'MACHINES', layers: ['drive', 'tape', 'relay', 'keyboard', 'beeps', 'printer', 'modem'] },
   { id: 'outside', name: 'OUTSIDE THE HULL', layers: ['drone'] },
   { id: 'radio', name: 'RADIO', layers: ['signal', 'morse', 'teleprinter', 'carrier', 'broadcast'] },
