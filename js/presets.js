@@ -14,7 +14,9 @@ export const PRESETS = {
   SEARCHING: {
     macros: { distance: 0.28, age: 0.12, activity: 0.36, signal: 0.68 },
     layers: {
-      signal: { level: 0.62 },
+      morse: { level: 0.6 },
+      carrier: { level: 0.58 },
+      broadcast: { level: 0.66, rate: 0.62 },
       drive: { level: 0.26 },
       tape: { level: 0.42 },
     },

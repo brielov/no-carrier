@@ -92,7 +92,9 @@ export class PowerSequence {
       engine.report('SELF TEST PASSED');
     });
     this.step(time, steps.receiver, (at) => {
-      for (const id of ['signal', 'drone']) this.layer(id)?.switchPower(1, at, cfg.outsideRiseTc);
+      for (const id of ['signal', 'drone', 'morse', 'teleprinter', 'carrier', 'broadcast']) {
+        this.layer(id)?.switchPower(1, at, cfg.outsideRiseTc);
+      }
       engine.operating = true;
       engine.report('RECEIVER ONLINE');
     });

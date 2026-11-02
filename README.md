@@ -40,7 +40,9 @@ can leave the app silent. If the system log shows a `FAULT` line, a hard reload
   further away, or focus it and use the arrow keys. Distance changes its tone
   and room sound as well as its level.
 - **Each layer** has volume, mute and rate controls, buttons to trigger its
-  sounds on demand, and for some, a choice of real machine to listen to.
+  sounds on demand, and for some, a choice of real machine to listen to. The
+  radio is split the same way: the receiver itself, then Morse, teleprinter,
+  carriers and broadcasts, each with its own controls.
 
 Drag a knob up or down (hold Shift for fine control), scroll over it, or focus it
 and use the arrow keys, Page Up and Down, Home and End. Double-click returns it to
@@ -62,7 +64,7 @@ in that file. Press **DEFAULT** to return to the values in `js/config.js`.
 | `js/engine.js` | AudioContext, power, settings, layer registry |
 | `js/scheduler.js` | Lookahead scheduler and Poisson event processes |
 | `js/timer-worker.js` | Tick source that is not throttled in background tabs |
-| `js/layers/` | One module per sound layer |
+| `js/layers/` | One module per sound layer; `signal.js` is the receiver and `radio.js` what it picks up |
 | `js/effects.js` | Distance, Age, placement, compressor and limiter |
 | `js/power.js` | Power on and off sequences |
 | `js/director.js` | Crossfades, Auto Drift, sleep timer |
@@ -88,7 +90,7 @@ of machine, `model` is an id from that layer's `models` in `js/config.js`.
 
 | Layer | `kind` values |
 | --- | --- |
-| `drive` | `short`, `long`, `recal` (a rare heavy event; none is included) |
+| `drive` | `short`, `long`, `recal` (a rare heavy event: heads recalibrating) |
 | `keyboard` | `key`, `heavy` |
 | `tape` | `shuttle` |
 | `printer` | `line`, one whole printed line per file |
@@ -106,6 +108,7 @@ Use mono or stereo WAV at any sample rate. To find more, search
 | `drive/pc-*` | [oldcomputerbootingup](https://freesound.org/s/328683/) by vacuumfan7072 | CC0 |
 | `drive/st277n-*` | [1980s Seagate ST277N 63MB SCSI hard drive](https://freesound.org/s/475216/) by jodybruchon | CC0 |
 | `drive/caviar-*` | [Caviar 32500](https://freesound.org/s/116033/) by galeku | CC0 |
+| `drive/recal-02.wav` | [Hard Drive 7200RPM Spin Up, Idle and Spin Down](https://freesound.org/s/465592/) by conath | CC0 |
 | `drive/vintage-*` | [Vintage Hard Drive Read and Idle](https://freesound.org/s/493891/) by Crinkem | CC0 |
 | `printer/line-a-*` | [dot matrix printer](https://freesound.org/s/320008/) by DisasterServices | CC0 |
 | `printer/line-b-*` | [old dot-matrix printer](https://freesound.org/s/181420/) by viertelnachvier | CC0 |

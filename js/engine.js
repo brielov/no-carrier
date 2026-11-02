@@ -6,6 +6,7 @@ import { PowerSequence } from './power.js';
 import { RECIPES } from './recipes.js';
 import { SampleBank } from './samples.js';
 import { Scheduler } from './scheduler.js';
+import { BroadcastLayer, CarrierLayer, MorseLayer, TeleprinterLayer } from './layers/radio.js';
 import { SignalLayer } from './layers/signal.js';
 import { AirLayer } from './layers/air.js';
 import { BeepLayer } from './layers/beeps.js';
@@ -18,7 +19,7 @@ import { PrinterLayer } from './layers/printer.js';
 import { RelayLayer } from './layers/relay.js';
 import { TapeLayer } from './layers/tape.js';
 
-const LAYERS = [HumLayer, AirLayer, DriveLayer, TapeLayer, RelayLayer, KeyboardLayer, BeepLayer, PrinterLayer, ModemLayer, SignalLayer, DroneLayer];
+const LAYERS = [HumLayer, AirLayer, DriveLayer, TapeLayer, RelayLayer, KeyboardLayer, BeepLayer, PrinterLayer, ModemLayer, SignalLayer, MorseLayer, TeleprinterLayer, CarrierLayer, BroadcastLayer, DroneLayer];
 
 export class Engine {
   constructor(cfg) {
@@ -93,6 +94,7 @@ export class Engine {
         const layer = new LayerClass(this, LayerClass.id, this.buses[LayerClass.bus]);
         this.layers.set(LayerClass.id, layer);
         layer.start();
+        if (LayerClass.id === 'signal') this.buses.sky = layer.sky; // where radio parts play
       } catch (error) {
         this.reportFault(LayerClass.id, error);
       }

@@ -329,6 +329,10 @@
       "file": "drive/st277n-long-10.wav",
       "model": "st277n",
       "kind": "long"
+    },
+    {
+      "file": "drive/recal-02.wav",
+      "kind": "recal"
     }
   ],
   "printer": [

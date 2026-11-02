@@ -628,7 +628,7 @@ export const CONFIG = {
     // 15 wpm, and teleprinter tones 170 Hz apart. meanIdleSec values are at
     // the middle of the RATE knob.
     signal: {
-      label: 'SIGNAL SEARCH',
+      label: 'RECEIVER',
       defaultLevel: 0.5,
       maxGain: 1,
 
@@ -689,8 +689,6 @@ export const CONFIG = {
       },
 
       carrier: {
-        meanIdleSec: 85,
-        minIdleSec: 20,
         durationSec: { min: 9, max: 24 },
         pitchesHz: [640, 815, 1040, 1320],
         harmonics: [1, 0.22, 0.09],
@@ -699,18 +697,12 @@ export const CONFIG = {
         gain: 0.055,
       },
 
-      // How often the receiver almost catches something.
+      // Morse and teleprinter fragments.
       fragment: {
-        meanIdleSec: 95,
-        minIdleSec: 25,
-        morseChance: 0.65, // otherwise teleprinter data
         durationSec: { min: 6, max: 15 },
       },
-      // Recorded messages going round on a loop somewhere. The Signal macro
-      // makes them more or less common, like the other fragments.
+      // Recorded messages going round on a loop somewhere.
       broadcast: {
-        meanIdleSec: 190,
-        minIdleSec: 90,
         gain: 0.4,
         pitchVary: 0.015,
         midwayChance: 0.3, // chance of tuning in partway through
@@ -720,7 +712,23 @@ export const CONFIG = {
         trailSec: 0.5,
       },
       morse: {
-        wpm: { min: 12, max: 20 },
+        // The Meridian's own traffic, keyed properly so it can be read by ear.
+        // Ham shorthand: CQ = calling anyone, DE = from, K = go ahead,
+        // QRZ = who is calling me, = marks a break, 73 = best regards.
+        storyChance: 0.5, // otherwise another station
+        fromStartChance: 0.65, // otherwise you catch it partway in
+        messages: [
+          'CQ CQ CQ DE MERIDIAN MERIDIAN K',
+          'QRZ QRZ DE MERIDIAN K',
+          'ANY STATION ANY STATION DE MERIDIAN = PSE QSL K',
+          'MERIDIAN = ALL CREW WELL = HOLDING POSITION K',
+          'DAY 4012 = NOTHING TO REPORT = LAMPS ON',
+          'WE ARE STILL HERE = WE ARE STILL LISTENING',
+          'IF YOU COPY ANSWER ON ANY CHANNEL K',
+          'THE STARS ARE BEAUTIFUL OUT HERE = 73',
+          'QTH DEEP SPACE = NO CARRIER = 73 K',
+        ],
+        wpm: { min: 12, max: 18 },
         pitchHz: { min: 640, max: 1150 },
         harmonics: [1, 0.18],
         edgeSec: 0.006, // softens each key press
@@ -732,6 +740,41 @@ export const CONFIG = {
         pitchHz: { min: 900, max: 2000 },
         gain: 0.04,
       },
+    },
+
+    // What the receiver picks up, each with its own controls. They all play
+    // through the receiver above. meanIdleSec is the average gap at the middle
+    // of the RATE knob; the Signal macro makes all of them more or less common.
+    morse: {
+      label: 'MORSE',
+      defaultLevel: 0.5,
+      maxGain: 1,
+      meanIdleSec: 145,
+      minIdleSec: 25,
+    },
+
+    teleprinter: {
+      label: 'TELEPRINTER',
+      defaultLevel: 0.5,
+      maxGain: 1,
+      meanIdleSec: 270,
+      minIdleSec: 25,
+    },
+
+    carrier: {
+      label: 'CARRIER',
+      defaultLevel: 0.5,
+      maxGain: 1,
+      meanIdleSec: 85,
+      minIdleSec: 20,
+    },
+
+    broadcast: {
+      label: 'BROADCAST',
+      defaultLevel: 0.5,
+      maxGain: 1,
+      meanIdleSec: 190,
+      minIdleSec: 90,
     },
 
     drone: {

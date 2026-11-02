@@ -408,9 +408,14 @@ body[data-power='on'] .glass {
   gap: 12px;
 }
 
-.bank[data-zone='machines'] {
+.bank[data-zone='radio'] {
   grid-column: 1 / -1;
   grid-row: 2;
+}
+
+.bank[data-zone='machines'] {
+  grid-column: 1 / -1;
+  grid-row: 3;
 }
 
 .bank {
@@ -419,7 +424,8 @@ body[data-power='on'] .glass {
   border-top: 3px solid var(--lamp);
 }
 
-.bank[data-zone='outside'] {
+.bank[data-zone='outside'],
+.bank[data-zone='radio'] {
   --lamp: var(--teal);
 }
 
@@ -520,7 +526,8 @@ body[data-power='on'] .lamp::before {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .bank[data-zone='machines'] {
+  .bank[data-zone='machines'],
+  .bank[data-zone='radio'] {
     grid-row: auto;
   }
 

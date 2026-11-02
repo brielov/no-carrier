@@ -6,28 +6,62 @@ const MORSE = {
   I: '..', J: '.---', K: '-.-', L: '.-..', M: '--', N: '-.', O: '---', P: '.--.',
   Q: '--.-', R: '.-.', S: '...', T: '-', U: '..-', V: '...-', W: '.--', X: '-..-',
   Y: '-.--', Z: '--..',
+  0: '-----', 1: '.----', 2: '..---', 3: '...--', 4: '....-', 5: '.....',
+  6: '-....', 7: '--...', 8: '---..', 9: '----.',
+  '=': '-...-', '?': '..--..', '/': '-..-.', '.': '.-.-.-',
 };
-const LETTERS = Object.keys(MORSE);
+const LETTERS = Object.keys(MORSE).filter((key) => /[A-Z]/.test(key));
+
+const randomLetters = () => Array.from({ length: 40 }, () => pick(LETTERS)).join('');
+
+// Standard Morse timing: a dah is three dits, a gap between letters three, and
+// between words seven. A slight, human unevenness, but always readable.
+// Returns [start, length] for each key press, up to `until`.
+function morseKeying(text, from, dit, until) {
+  const keying = [];
+  let at = from;
+  const swing = () => rand(0.95, 1.06);
+  for (const char of text) {
+    if (at > until) break;
+    if (char === ' ') {
+      at += dit * 4 * swing(); // plus the letter gap already taken: seven dits
+      continue;
+    }
+    for (const mark of MORSE[char] ?? '') {
+      const length = (mark === '.' ? dit : dit * 3) * swing();
+      keying.push([at, length]);
+      at += length + dit * swing();
+    }
+    at += dit * 2 * swing(); // with the gap after the last mark: three dits
+  }
+  return keying;
+}
 
 // Radio dial position, for the log.
 const dial = ({ min, max }) => `${rand(min, max).toFixed(3)} MHz`;
 
-// The receiver: static in a hard-edged channel, slow fading, crackle, and
-// things that almost become a signal before sinking back. All of it is
-// heard through the same channel filter, as it would be on a real set.
+// The receiver: static in a hard-edged channel, slow fading, crackle and
+// scanning. Morse, teleprinter, carriers and broadcasts are layers of their own
+// (see radio.js) with their own controls, but they all play through this one
+// receiver, so they share its channel, fading and squelch as on a real set.
+//
+// Each signal method takes the `part` that asked for it: that layer's output
+// sets the level, and its lamp is the one that blinks.
 export class SignalLayer extends Layer {
   static id = 'signal';
   static bus = 'outside';
-  static triggerLabels = ['SCAN', 'CARRIER', 'MORSE', 'DATA', 'BROADCAST'];
+  static triggerLabels = ['SCAN'];
 
   start() {
     const { ctx, cfg, noise } = this;
-    const { channel, staticLevel, crackleGain, fading, slowFading, signalFading, signalFadingMotion, wander, scan, carrier, fragment } = cfg;
+    const { channel, staticLevel, crackleGain, fading, slowFading, signalFading, signalFadingMotion, wander, scan } = cfg;
 
+    // Signals: fading and the Signal macro, then straight to this layer's
+    // power switch. The receiver's own level knob does not touch them.
     const fade = new GainNode(ctx);
     const slowFade = new GainNode(ctx);
     this.presence = new GainNode(ctx, { gain: this.presenceGain() });
-    fade.connect(slowFade).connect(this.presence).connect(this.output);
+    fade.connect(slowFade).connect(this.presence).connect(this.mains);
     const toGain = (db) => 10 ** (db / 20);
     this.drift(fade.gain, fading, toGain);
     this.drift(slowFade.gain, slowFading, toGain);
@@ -38,7 +72,7 @@ export class SignalLayer extends Layer {
     // Static and crackle sit behind a squelch, as on a real receiver: closed
     // while it idles, open while it is scanning or holding something.
     this.squelch = new GainNode(ctx, { gain: cfg.squelch.closed });
-    this.squelch.connect(fade);
+    this.squelch.connect(this.output);
     this.openUntil = 0;
 
     // Static, separate left and right, so it stays wide.
@@ -58,6 +92,9 @@ export class SignalLayer extends Layer {
     this.drift(panner.pan, wander);
     this.drift(skyFade.gain, signalFading, toGain, signalFadingMotion);
     this.sky = this.channel(panner);
+    // Scan whistles are the receiver's own, so they follow its level knob.
+    this.scanIn = new GainNode(ctx, { gain: this.targetGain() });
+    this.scanIn.connect(this.sky);
     const crackle = new GainNode(ctx, { gain: crackleGain });
     noise.loop('crackle').connect(crackle).connect(this.channel(this.squelch));
 
@@ -67,17 +104,15 @@ export class SignalLayer extends Layer {
     for (const peak of this.peaks) peak.frequency.value = this.centre;
 
     this.events(scan.meanIdleSec, scan.minIdleSec, (time) => this.scan(time));
-    const almost = () => this.macroScale('signal');
-    this.events(carrier.meanIdleSec, carrier.minIdleSec, (time) => {
-      if (!this.onAir) this.carrier(time);
-    }, almost);
-    const catchSomething = (time) => {
-      if (this.onAir) return;
-      if (chance(fragment.morseChance)) this.morse(time);
-      else this.data(time);
-    };
-    this.events(fragment.meanIdleSec, fragment.minIdleSec, catchSomething, almost);
-    this.events(cfg.broadcast.meanIdleSec, cfg.broadcast.minIdleSec, (time) => this.broadcast(time), almost);
+  }
+
+  applyGain() {
+    super.applyGain();
+    this.scanIn?.gain.setTargetAtTime(this.targetGain(), this.ctx.currentTime, this.engine.cfg.engine.knobTc);
+  }
+
+  part(id) {
+    return this.engine.layers.get(id) ?? this;
   }
 
   // The Signal macro also brings the whole receiver forward or back.
@@ -91,22 +126,19 @@ export class SignalLayer extends Layer {
   }
 
   previewModel(time) {
-    if (chance(0.5)) this.morse(time);
-    else this.data(time);
+    if (chance(0.5)) this.morse(time, this.part('morse'));
+    else this.data(time, this.part('teleprinter'));
   }
 
   triggers() {
-    return {
-      SCAN: (time) => this.scan(time),
-      CARRIER: (time) => this.carrier(time),
-      MORSE: (time) => this.morse(time),
-      DATA: (time) => this.data(time),
-      BROADCAST: (time) => this.broadcast(time),
-    };
+    return { SCAN: (time) => this.scan(time) };
   }
 
-  // Open the receiver for a while. Overlapping activity keeps it open.
-  listen(time, seconds) {
+  // Open the receiver for a while. Overlapping activity keeps it open. A
+  // muted part leaves it closed, so muting Morse doesn't leave empty static.
+  listen(time, seconds, part = this) {
+    const { muted, level } = this.engine.settings.layers[part.id];
+    if (muted || level === 0) return;
     const { squelch } = this.cfg;
     const until = time + seconds + randRange(squelch.tailSec);
     if (time >= this.openUntil) this.squelch.gain.setTargetAtTime(1, time, squelch.openTc);
@@ -131,8 +163,8 @@ export class SignalLayer extends Layer {
 
   // One tone. Transmitters switch on and off: edges are quick, and any
   // fading happens to the signal while it is on the air.
-  voice(time, seconds, { gain, harmonics }, setup) {
-    if (!this.claimVoice()) return;
+  voice(time, seconds, { gain, harmonics }, setup, part = this) {
+    if (!part.claimVoice()) return;
     const { ctx, cfg } = this;
     const { onTc, offTc } = cfg.edges;
     const osc = new OscillatorNode(ctx);
@@ -143,27 +175,27 @@ export class SignalLayer extends Layer {
     }
     const key = new GainNode(ctx);
     const amp = new GainNode(ctx, { gain: 0 });
-    osc.connect(key).connect(amp).connect(this.sky);
+    osc.connect(key).connect(amp).connect(part === this ? this.scanIn : part.output);
     amp.gain.setTargetAtTime(gain, time, onTc);
     amp.gain.setTargetAtTime(0, time + seconds, offTc);
     setup(osc, key);
     osc.start(time);
     osc.stop(time + seconds + offTc * 7);
-    this.releaseOnEnd(osc, [osc, key, amp]);
-    this.engine.flash(this.id, time);
+    part.releaseOnEnd(osc, [osc, key, amp]);
+    this.engine.flash(part.id, time);
   }
 
   // A real off-air recording, heard through the same receiver.
-  playTake(time, kind) {
+  playTake(time, kind, part) {
     const takes = this.modelSamples(kind);
     if (!takes.length) return 0;
     const { recording } = this.cfg;
-    const seconds = this.playSample(time, pick(takes), {
+    const seconds = part.playSample(time, pick(takes), {
       gain: recording.gain * rand(0.8, 1.1),
       pitch: rand(1 - recording.pitchVary, 1 + recording.pitchVary),
-      dest: this.sky,
+      dest: part.output,
     });
-    this.listen(time, seconds);
+    this.listen(time, seconds, part);
     return seconds;
   }
 
@@ -193,17 +225,17 @@ export class SignalLayer extends Layer {
   }
 
   // A steady tone that comes up out of the static and goes back down.
-  carrier(time) {
+  carrier(time, part = this.part('carrier')) {
     const { carrier, scan } = this.cfg;
     const mhz = dial(scan.bandMHz);
-    const recorded = this.playTake(time, 'carrier');
+    const recorded = this.playTake(time, 'carrier', part);
     if (recorded) {
-      this.event(time, `CARRIER ${mhz} ...`);
-      this.event(time + recorded, `${mhz} NO CARRIER`);
+      part.event(time, `CARRIER ${mhz} ...`);
+      part.event(time + recorded, `${mhz} NO CARRIER`);
       return;
     }
     const seconds = randRange(carrier.durationSec);
-    this.listen(time, seconds);
+    this.listen(time, seconds, part);
     const drift = randRange(carrier.driftCents);
     const { dropouts } = carrier;
     const options = { gain: carrier.gain, harmonics: carrier.harmonics };
@@ -218,15 +250,15 @@ export class SignalLayer extends Layer {
         key.gain.setTargetAtTime(0, at, 0.006);
         key.gain.setTargetAtTime(1, at + gap, 0.006);
       }
-    });
-    this.event(time, `CARRIER ${mhz} ...`);
-    this.event(time + seconds, `${mhz} NO CARRIER`);
+    }, part);
+    part.event(time, `CARRIER ${mhz} ...`);
+    part.event(time + seconds, `${mhz} NO CARRIER`);
   }
 
   // A recorded message, looping on some frequency for who knows how long. You
   // may catch it from the start or come in partway. Sometimes it goes round
   // again, which is the moment you realise it is a loop.
-  broadcast(time) {
+  broadcast(time, part = this.part('broadcast')) {
     if (this.onAir) return;
     const takes = this.engine.samples.find('signal', { kind: 'broadcast' });
     if (!takes.length) return;
@@ -234,38 +266,38 @@ export class SignalLayer extends Layer {
     const take = pick(takes);
     const mhz = dial(scan.bandMHz);
     this.onAir = true;
-    this.event(time, `BROADCAST ${mhz} ...`);
+    part.event(time, `BROADCAST ${mhz} ...`);
     const midway = chance(broadcast.midwayChance);
     const offset = midway ? take.buffer.duration * rand(0.2, 0.5) : 0;
-    const seconds = this.playBroadcast(time, take, offset);
+    const seconds = this.playBroadcast(time, take, offset, part);
     const again = () => {
       if (!chance(broadcast.repeatChance)) return 0;
       const next = time + seconds + randRange(broadcast.repeatGapSec);
-      this.event(next, 'MESSAGE REPEATS');
-      return next - time + this.playBroadcast(next, take, 0);
+      part.event(next, 'MESSAGE REPEATS');
+      return next - time + this.playBroadcast(next, take, 0, part);
     };
     this.scheduler.at(time + seconds, () => {
       const total = again();
       this.scheduler.at(time + Math.max(total, seconds), (end) => {
         this.onAir = false;
-        this.event(end, `${mhz} ... LOST`);
+        part.event(end, `${mhz} ... LOST`);
       });
     });
   }
 
   // Play a message from `offset`, printing each sentence as it is spoken.
-  playBroadcast(time, take, offset) {
+  playBroadcast(time, take, offset, part) {
     const { broadcast } = this.cfg;
     const { duration } = take.buffer;
     const pitch = rand(1 - broadcast.pitchVary, 1 + broadcast.pitchVary);
-    const seconds = this.playSample(time, take, {
+    const seconds = part.playSample(time, take, {
       gain: broadcast.gain * rand(0.9, 1.1),
       pitch,
       offset,
       fadeSec: 0.01,
-      dest: this.sky,
+      dest: part.output,
     });
-    this.listen(time, seconds);
+    this.listen(time, seconds, part);
 
     // Sentence times are estimated from their length in characters.
     const { leadSec, trailSec } = broadcast;
@@ -276,36 +308,31 @@ export class SignalLayer extends Layer {
     for (const line of sentences) {
       const at = (leadSec + (chars / total) * spoken - offset) / pitch;
       chars += line.length;
-      if (at >= 0) this.event(time + at, `RX: ${line.trim().toUpperCase()}`);
+      if (at >= 0) part.event(time + at, `RX: ${line.trim().toUpperCase()}`);
     }
     return seconds;
   }
 
-  // A hand-keyed fragment. Real letters, cut off before they say anything.
-  morse(time) {
+  // A hand-keyed fragment. Sometimes it is the Meridian, sending real words
+  // in proper Morse for anyone who can read it; otherwise some other station,
+  // off air or in random letters. Either way it is cut off before the end, and
+  // the log never shows the words: they are only there for the ear.
+  morse(time, part = this.part('morse')) {
     const { morse, fragment, scan } = this.cfg;
-    const recorded = this.playTake(time, 'morse');
-    if (recorded) {
-      this.fragmentLog(time, recorded, scan.bandMHz);
-      return;
+    const meridian = chance(morse.storyChance);
+    if (!meridian) {
+      const recorded = this.playTake(time, 'morse', part);
+      if (recorded) {
+        this.fragmentLog(time, recorded, scan.bandMHz, part);
+        return;
+      }
     }
     const dit = 1.2 / randRange(morse.wpm);
     const edge = morse.edgeSec;
     const pitch = randRange(morse.pitchHz);
     const seconds = randRange(fragment.durationSec);
-    this.listen(time, seconds);
-    const body = seconds;
-
-    const keying = [];
-    let at = time + rand(0, 0.6);
-    while (at < time + body) {
-      for (const mark of MORSE[pick(LETTERS)]) {
-        const length = mark === '.' ? dit : dit * 3;
-        keying.push([at, length]);
-        at += length * rand(0.94, 1.08) + dit; // a human fist, slightly uneven
-      }
-      at += dit * rand(2, 3.4);
-    }
+    this.listen(time, seconds, part);
+    const keying = morseKeying(meridian ? this.storyText() : randomLetters(), time + rand(0.1, 0.6), dit, time + seconds);
 
     const options = { gain: morse.gain, harmonics: morse.harmonics };
     this.voice(time, seconds, options, (osc, key) => {
@@ -318,20 +345,28 @@ export class SignalLayer extends Layer {
         key.gain.setValueAtTime(1, start + length - edge);
         key.gain.linearRampToValueAtTime(0, start + length);
       }
-    });
-    this.fragmentLog(time, seconds, scan.bandMHz);
+    }, part);
+    this.fragmentLog(time, seconds, scan.bandMHz, part);
+  }
+
+  // A Meridian message, usually from the top, sometimes caught partway in.
+  storyText() {
+    const { messages, fromStartChance } = this.cfg.morse;
+    const words = pick(messages).split(' ');
+    const from = chance(fromStartChance) ? 0 : randInt({ min: 1, max: Math.max(1, words.length - 2) });
+    return words.slice(from).join(' ');
   }
 
   // Teleprinter data: fast switching between two tones 170 Hz apart.
-  data(time) {
+  data(time, part = this.part('teleprinter')) {
     const { data, fragment, scan } = this.cfg;
-    const recorded = this.playTake(time, 'data');
+    const recorded = this.playTake(time, 'data', part);
     if (recorded) {
-      this.fragmentLog(time, recorded, scan.bandMHz);
+      this.fragmentLog(time, recorded, scan.bandMHz, part);
       return;
     }
     const seconds = randRange(fragment.durationSec);
-    this.listen(time, seconds);
+    this.listen(time, seconds, part);
     const low = randRange(data.pitchHz);
     const high = low + data.shiftHz;
     const step = 1 / data.baud;
@@ -341,12 +376,12 @@ export class SignalLayer extends Layer {
       for (let at = time; at < time + seconds; at += step) {
         osc.frequency.setValueAtTime(chance(0.5) ? high : low, at);
       }
-    });
-    this.fragmentLog(time, seconds, scan.bandMHz);
+    }, part);
+    this.fragmentLog(time, seconds, scan.bandMHz, part);
   }
 
-  fragmentLog(time, seconds, band) {
-    this.event(time, `SIGNAL FRAGMENT ${dial(band)} ...`);
-    this.event(time + seconds, '... LOST');
+  fragmentLog(time, seconds, band, part) {
+    part.event(time, `SIGNAL FRAGMENT ${dial(band)} ...`);
+    part.event(time + seconds, '... LOST');
   }
 }

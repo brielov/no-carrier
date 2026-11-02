@@ -1,4 +1,5 @@
 const KEY = 'no-carrier-settings';
+const RADIO_PARTS = ['morse', 'teleprinter', 'carrier', 'broadcast'];
 
 const clamp = (value, fallback) =>
   Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : fallback;
@@ -27,7 +28,8 @@ export function sanitize(raw, base) {
     result.macros[name] = clamp(data.macros?.[name], base.macros[name]);
   }
   for (const [id, layer] of Object.entries(base.layers)) {
-    const saved = data.layers?.[id];
+    // Older saves had one SIGNAL SEARCH layer for all of these.
+    const saved = data.layers?.[id] ?? (RADIO_PARTS.includes(id) ? data.layers?.signal : undefined);
     result.layers[id].level = clamp(saved?.level, layer.level);
     result.layers[id].rate = clamp(saved?.rate, layer.rate);
     if (typeof saved?.muted === 'boolean') result.layers[id].muted = saved.muted;
