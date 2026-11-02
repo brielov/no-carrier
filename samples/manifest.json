@@ -1,0 +1,1252 @@
+{
+  "drive": [
+    {
+      "file": "drive/pc-short-01.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-02.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-03.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-04.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-05.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-06.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-07.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-08.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-09.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-10.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-11.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-12.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-13.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-14.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-15.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-short-16.wav",
+      "model": "pc",
+      "kind": "short"
+    },
+    {
+      "file": "drive/pc-long-01.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-02.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-03.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-04.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-05.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-06.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-07.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-08.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-09.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-10.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-11.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-12.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-13.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-14.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/pc-long-15.wav",
+      "model": "pc",
+      "kind": "long"
+    },
+    {
+      "file": "drive/caviar-short-01.wav",
+      "model": "caviar",
+      "kind": "short"
+    },
+    {
+      "file": "drive/caviar-short-02.wav",
+      "model": "caviar",
+      "kind": "short"
+    },
+    {
+      "file": "drive/caviar-short-03.wav",
+      "model": "caviar",
+      "kind": "short"
+    },
+    {
+      "file": "drive/caviar-long-01.wav",
+      "model": "caviar",
+      "kind": "long"
+    },
+    {
+      "file": "drive/caviar-long-02.wav",
+      "model": "caviar",
+      "kind": "long"
+    },
+    {
+      "file": "drive/caviar-long-03.wav",
+      "model": "caviar",
+      "kind": "long"
+    },
+    {
+      "file": "drive/caviar-long-04.wav",
+      "model": "caviar",
+      "kind": "long"
+    },
+    {
+      "file": "drive/vintage-short-01.wav",
+      "model": "vintage",
+      "kind": "short"
+    },
+    {
+      "file": "drive/vintage-short-02.wav",
+      "model": "vintage",
+      "kind": "short"
+    },
+    {
+      "file": "drive/vintage-short-03.wav",
+      "model": "vintage",
+      "kind": "short"
+    },
+    {
+      "file": "drive/vintage-short-04.wav",
+      "model": "vintage",
+      "kind": "short"
+    },
+    {
+      "file": "drive/vintage-short-05.wav",
+      "model": "vintage",
+      "kind": "short"
+    },
+    {
+      "file": "drive/vintage-long-01.wav",
+      "model": "vintage",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-short-01.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-02.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-03.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-04.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-05.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-06.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-07.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-08.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-09.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-10.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-11.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-short-12.wav",
+      "model": "st277n",
+      "kind": "short"
+    },
+    {
+      "file": "drive/st277n-long-01.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-02.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-03.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-04.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-05.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-06.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-07.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-08.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-09.wav",
+      "model": "st277n",
+      "kind": "long"
+    },
+    {
+      "file": "drive/st277n-long-10.wav",
+      "model": "st277n",
+      "kind": "long"
+    }
+  ],
+  "printer": [
+    {
+      "file": "printer/line-a-01.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-02.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-03.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-04.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-05.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-06.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-07.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-08.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-09.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-10.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-11.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-a-12.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-01.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-02.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-03.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-04.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-05.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-06.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-07.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-08.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-09.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-10.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-11.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-12.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-13.wav",
+      "kind": "line"
+    },
+    {
+      "file": "printer/line-b-14.wav",
+      "kind": "line"
+    }
+  ],
+  "modem": [
+    {
+      "file": "modem/handshake-a.wav",
+      "kind": "handshake"
+    },
+    {
+      "file": "modem/handshake-b.wav",
+      "kind": "handshake"
+    },
+    {
+      "file": "modem/handshake-c.wav",
+      "kind": "handshake"
+    },
+    {
+      "file": "modem/data-a.wav",
+      "kind": "data"
+    },
+    {
+      "file": "modem/data-b.wav",
+      "kind": "data"
+    }
+  ],
+  "keyboard": [
+    {
+      "file": "keyboard/office-heavy-01.wav",
+      "model": "office",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/office-heavy-02.wav",
+      "model": "office",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/office-heavy-03.wav",
+      "model": "office",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/office-heavy-04.wav",
+      "model": "office",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/office-heavy-05.wav",
+      "model": "office",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/office-heavy-06.wav",
+      "model": "office",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/office-key-01.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-02.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-03.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-04.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-05.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-06.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-07.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-08.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-09.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-10.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-11.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-12.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-13.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-14.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-15.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-16.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-17.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-18.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-19.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-20.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-21.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-22.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-23.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/office-key-24.wav",
+      "model": "office",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-heavy-01.wav",
+      "model": "soft",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/soft-heavy-02.wav",
+      "model": "soft",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/soft-heavy-03.wav",
+      "model": "soft",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/soft-heavy-04.wav",
+      "model": "soft",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/soft-heavy-05.wav",
+      "model": "soft",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/soft-heavy-06.wav",
+      "model": "soft",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/soft-key-01.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-02.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-03.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-04.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-05.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-06.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-07.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-08.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-09.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-10.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-11.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-12.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-13.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-14.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-15.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-16.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-17.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-18.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-19.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-20.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-21.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-22.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-23.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/soft-key-24.wav",
+      "model": "soft",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-heavy-01.wav",
+      "model": "mech",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/mech-heavy-02.wav",
+      "model": "mech",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/mech-heavy-03.wav",
+      "model": "mech",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/mech-heavy-04.wav",
+      "model": "mech",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/mech-heavy-05.wav",
+      "model": "mech",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/mech-heavy-06.wav",
+      "model": "mech",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/mech-key-01.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-02.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-03.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-04.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-05.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-06.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-07.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-08.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-09.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-10.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-11.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-12.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-13.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-14.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-15.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-16.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-17.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-18.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-19.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-20.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-21.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-22.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-23.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/mech-key-24.wav",
+      "model": "mech",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-heavy-01.wav",
+      "model": "modelf",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/modelf-heavy-02.wav",
+      "model": "modelf",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/modelf-heavy-03.wav",
+      "model": "modelf",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/modelf-heavy-04.wav",
+      "model": "modelf",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/modelf-heavy-05.wav",
+      "model": "modelf",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/modelf-heavy-06.wav",
+      "model": "modelf",
+      "kind": "heavy"
+    },
+    {
+      "file": "keyboard/modelf-key-01.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-02.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-03.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-04.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-05.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-06.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-07.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-08.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-09.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-10.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-11.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-12.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-13.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-14.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-15.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-16.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-17.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-18.wav",
+      "model": "modelf",
+      "kind": "key"
+    },
+    {
+      "file": "keyboard/modelf-key-19.wav",
+      "model": "modelf",
+      "kind": "key"
+    }
+  ],
+  "power": [
+    {
+      "file": "power/breaker-on.wav",
+      "kind": "breakerOn"
+    },
+    {
+      "file": "power/breaker-off.wav",
+      "kind": "breakerOff"
+    },
+    {
+      "file": "power/crt-on.wav",
+      "kind": "crtOn"
+    },
+    {
+      "file": "power/crt-off.wav",
+      "kind": "crtOff"
+    },
+    {
+      "file": "power/spin-up.wav",
+      "kind": "spinUp"
+    },
+    {
+      "file": "power/spin-down.wav",
+      "kind": "spinDown"
+    }
+  ],
+  "tape": [
+    {
+      "file": "tape/reel-a.wav",
+      "model": "reel",
+      "kind": "shuttle"
+    },
+    {
+      "file": "tape/reel-b.wav",
+      "model": "reel",
+      "kind": "shuttle"
+    },
+    {
+      "file": "tape/reel-c.wav",
+      "model": "reel",
+      "kind": "shuttle"
+    },
+    {
+      "file": "tape/revox-a.wav",
+      "model": "revox",
+      "kind": "shuttle"
+    },
+    {
+      "file": "tape/revox-b.wav",
+      "model": "revox",
+      "kind": "shuttle"
+    },
+    {
+      "file": "tape/tonal-a.wav",
+      "model": "tonal",
+      "kind": "shuttle"
+    }
+  ],
+  "signal": [
+    {
+      "file": "signal/morse-1.wav",
+      "model": "real",
+      "kind": "morse"
+    },
+    {
+      "file": "signal/morse-2.wav",
+      "model": "real",
+      "kind": "morse"
+    },
+    {
+      "file": "signal/morse-3.wav",
+      "model": "real",
+      "kind": "morse"
+    },
+    {
+      "file": "signal/morse-4.wav",
+      "model": "real",
+      "kind": "morse"
+    },
+    {
+      "file": "signal/morse-5.wav",
+      "model": "real",
+      "kind": "morse"
+    },
+    {
+      "file": "signal/morse-6.wav",
+      "model": "real",
+      "kind": "morse"
+    },
+    {
+      "file": "signal/morse-7.wav",
+      "model": "real",
+      "kind": "morse"
+    },
+    {
+      "file": "signal/data-1.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/data-2.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/data-3.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/data-4.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/data-5.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/data-6.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/data-7.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/data-8.wav",
+      "model": "real",
+      "kind": "data"
+    },
+    {
+      "file": "signal/carrier-1.wav",
+      "model": "real",
+      "kind": "carrier"
+    },
+    {
+      "file": "signal/carrier-2.wav",
+      "model": "real",
+      "kind": "carrier"
+    },
+    {
+      "file": "signal/carrier-3.wav",
+      "model": "real",
+      "kind": "carrier"
+    },
+    {
+      "file": "signal/carrier-4.wav",
+      "model": "real",
+      "kind": "carrier"
+    },
+    {
+      "file": "signal/carrier-5.wav",
+      "model": "real",
+      "kind": "carrier"
+    },
+    {
+      "file": "signal/carrier-6.wav",
+      "model": "real",
+      "kind": "carrier"
+    },
+    {
+      "file": "signal/broadcast-survey.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "This is the survey vessel Meridian. We are holding position, and all systems are nominal. If you can hear this, please respond. This message repeats."
+    },
+    {
+      "file": "signal/broadcast-listening.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "If there is anybody out there, you are not alone. We are still listening on this frequency. We will keep listening."
+    },
+    {
+      "file": "signal/broadcast-automated.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "This is an automated message. The crew of the Meridian is well. We have light, and air, and time. If you receive this, answer on any channel."
+    },
+    {
+      "file": "signal/broadcast-here.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "To anyone receiving this signal. My name does not matter. I just wanted someone to know that we were here."
+    },
+    {
+      "file": "signal/broadcast-lamps.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "Day four thousand and twelve. Nothing to report. The lamps are on. We are leaving the lamps on for you."
+    },
+    {
+      "file": "signal/broadcast-calling.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "Calling any station. Calling any station. This is Meridian. We hear nothing, but we keep calling. Over."
+    },
+    {
+      "file": "signal/broadcast-stars.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "If this reaches you, and we are gone, know that the stars were beautiful out here. End of message."
+    },
+    {
+      "file": "signal/broadcast-beacon.wav",
+      "model": "real",
+      "kind": "broadcast",
+      "text": "This beacon will transmit for as long as there is power. It is a quiet place. Come and find us, if you can."
+    }
+  ]
+}

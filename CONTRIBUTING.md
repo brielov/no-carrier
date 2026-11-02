@@ -1,0 +1,49 @@
+# Contributing
+
+Thanks for wanting to help. NO CARRIER is small and deliberately simple, so a
+few notes go a long way.
+
+## Ground rules
+
+- **No dependencies and no build step.** Plain HTML, CSS and JavaScript modules
+  that run straight from a static server.
+- **Calm over busy.** Nothing harsh, shrill or startling. Silence matters as much
+  as sound, and nothing should ever feel looped.
+- **Tunable values belong in `js/config.js`,** with a short note on what they do
+  and which way to turn them.
+
+## Running it
+
+```sh
+python3 serve.py
+```
+
+Open <http://localhost:8000> and press **POWER ON**. The **DIAGNOSTICS** key
+shows the audio clock, scheduler health and how many sounds are playing. During
+a long session `STARVED` should stay at 0 and `VOICES` should not keep growing.
+
+## Adding recordings
+
+Recordings must be CC0 or public domain, so the project stays free to share.
+[Freesound](https://freesound.org) with the Creative Commons 0 filter is a good
+place to look.
+
+1. Put the file under `samples/<layer>/`. WAV, mono or stereo, any sample rate.
+2. List it in `samples/manifest.json` with its `kind`, and `model` where the
+   layer has a choice of machine. The README describes the values.
+3. Add a row to the sources table in the README, linking the original.
+
+Trim silence at the edges, keep levels consistent with similar files, and avoid
+fades on mechanical sounds: real machines start and stop abruptly.
+
+## Reporting a problem
+
+Open an issue with your browser and operating system, what you heard or saw,
+and anything from the system log or the **DIAGNOSTICS** panel. For sound
+problems, describing it in plain words helps a lot: "too harsh", "too regular",
+"too close".
+
+## Pull requests
+
+Keep each pull request to one change, describe how it sounds different, and
+check it in at least one Chromium-based browser and Firefox.

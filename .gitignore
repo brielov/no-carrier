@@ -1,0 +1,6 @@
+# Local only: a clip whose licence is not confirmed for redistribution
+samples/drive/recal-01.wav
+
+.DS_Store
+node_modules/
+.wrangler/
