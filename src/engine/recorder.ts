@@ -139,6 +139,7 @@ export class Recorder {
       copy.story.save = () => {}; // a render must not change your listening history
       copy.build(ctx);
       await copy.samples.load();
+      await Promise.all([...copy.layers.values()].map((layer) => layer.ready()));
       copy.powered = true;
       copy.master.power.gain.setValueAtTime(0, 0);
       copy.master.power.gain.linearRampToValueAtTime(1, FILE_FADE_SEC);

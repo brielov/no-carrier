@@ -242,6 +242,21 @@ export const CONFIG = {
       defaultLevel: 0.3,
       maxGain: 1,
 
+      // What the fans are: synthesized, or real recordings of fans and server
+      // rooms. id matches `model` in samples/manifest.json. Recordings load
+      // only when chosen, and each fan plays its own loop of them.
+      models: [
+        { id: 'synth', label: 'SYNTH' },
+        { id: 'server', label: 'SERVER' },
+        { id: 'rack', label: 'RACK' },
+        { id: 'fan', label: 'FAN' },
+      ],
+      defaultModel: 'synth',
+      recording: {
+        gain: 0.21, // as loud as the synthesized fans
+        crossfadeSec: 3, // when switching between models
+      },
+
       // Low duct rumble.
       rumble: {
         gain: 0.15,
@@ -490,6 +505,19 @@ export const CONFIG = {
       minIdleSec: 2,
       cluster: { clicks: { min: 1, max: 5 }, meanGapSec: 0.14, minGapSec: 0.035 },
 
+      // Synthesized clicks, or real relays. id matches `model` in
+      // samples/manifest.json. Recorded clicks bring their own contact bounce.
+      // gain makes up for the relays' place at the back of the room: distance
+      // dulls the bright crossbar clicks far more than the heavy ones.
+      models: [
+        { id: 'synth', label: 'SYNTH', gain: 1 },
+        { id: 'crossbar', label: 'CROSSBAR', gain: 1.3 },
+        { id: 'switchboard', label: 'SWITCHBOARD', gain: 1.07 },
+        { id: 'heavy', label: 'HEAVY', gain: 0.71 },
+      ],
+      defaultModel: 'synth',
+      recording: { gain: 0.6, pitchVary: 0.03 },
+
       hitGain: 0.42,
       // Contacts bounce: a few fast, shrinking ticks after the main one.
       bounce: {
@@ -512,20 +540,20 @@ export const CONFIG = {
       minIdleSec: 20,
 
       // Typed for real: one keystroke per character, then RETURN.
-      // Which real keyboard to hear. id matches `model` in samples/manifest.json;
-      // gain evens out how loud each recording is.
+      // Which real keyboard to hear. id matches `model` in samples/manifest.json.
+      // Their levels are matched in the manifest by scripts/levels.mjs.
       models: [
-        { id: 'office', label: 'OFFICE', gain: 1.6 },
-        { id: 'soft', label: 'SOFT', gain: 0.95 },
-        { id: 'mech', label: 'MECH', gain: 1.45 },
-        { id: 'modelf', label: 'MODEL F', gain: 1.2 },
+        { id: 'office', label: 'OFFICE' },
+        { id: 'soft', label: 'SOFT' },
+        { id: 'mech', label: 'MECH' },
+        { id: 'modelf', label: 'MODEL F' },
       ],
       defaultModel: 'office',
 
       // Recorded keystrokes, used whenever samples/ has them. Space and Return
       // use the heaviest strokes in the recording.
       recording: {
-        gain: 0.22,
+        gain: 0.33,
         pitchVary: 0.03,
         levelVaryDb: 4,
       },

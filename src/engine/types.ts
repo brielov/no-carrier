@@ -43,6 +43,8 @@ export interface SampleEntry {
   text?: string;
   mhz?: string;
   lazy?: boolean;
+  gain?: number; // evens out recording levels; written by scripts/levels.mjs
+  pitch?: number; // playback rate for this recording, so a take fits its neighbours
   buffer?: AudioBuffer;
   loading?: Promise<boolean>;
 }

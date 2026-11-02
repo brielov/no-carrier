@@ -1,7 +1,8 @@
 import { Layer } from './layer';
 import type { Triggers } from './layer';
 import type { LayerConfigs } from '../config';
-import { chance, pick, randRange } from '../random';
+import type { LoadedSample } from '../types';
+import { chance, pick, rand, randRange } from '../random';
 
 type AirConfig = LayerConfigs['air'];
 type FanConfig = AirConfig['fans'][number];
@@ -11,6 +12,8 @@ const centsToRatio = (cents: number): number => 2 ** (cents / 1200);
 
 // One cooling fan. Speed is held in cents and fed to every pitched part at
 // once, so a spin-up moves the tone, the blade pulsing and the whoosh together.
+// The fan is either synthesized or a looping recording; a recording follows
+// the same speed, by playing faster or slower.
 class Fan {
   readonly name: string;
   cents: number;
@@ -18,6 +21,9 @@ class Fan {
   readonly speed: ConstantSourceNode;
   readonly wander: ConstantSourceNode;
   readonly level: GainNode;
+  readonly synth: GainNode;
+  private readonly ctx: BaseAudioContext;
+  private recording: { source: AudioBufferSourceNode; amp: GainNode } | null = null;
 
   constructor(layer: AirLayer, fan: FanConfig, shared: AirConfig) {
     const { ctx, noise } = layer;
@@ -32,9 +38,12 @@ class Fan {
     layer.drift(this.wander.offset, shared.fanSpeedDriftCents);
 
     const startLevel = centsToRatio(shared.startupCents) ** this.exponent;
+    this.ctx = ctx;
     this.level = new GainNode(ctx, { gain: startLevel });
     const pan = new StereoPannerNode(ctx, { pan: fan.pan });
     this.level.connect(pan).connect(layer.output);
+    this.synth = new GainNode(ctx);
+    this.synth.connect(this.level);
 
     // Blade tone. One oscillator also supplies the pulsing of the whoosh, so
     // the two stay locked together as they would on a real fan.
@@ -49,7 +58,7 @@ class Fan {
     const shaft = new OscillatorNode(ctx, { frequency: fan.bladeHz / fan.blades });
     const shaftDepth = new GainNode(ctx, { gain: fan.toneGain * fan.wobbleDepth });
     const tone = new GainNode(ctx, { gain: fan.toneGain });
-    blade.connect(tone).connect(this.level);
+    blade.connect(tone).connect(this.synth);
     shaft.connect(shaftDepth).connect(tone.gain);
 
     // Air chopped by the blades.
@@ -60,7 +69,7 @@ class Fan {
     });
     const chop = new GainNode(ctx, { gain: fan.whooshGain });
     const chopDepth = new GainNode(ctx, { gain: fan.whooshGain * fan.amDepth });
-    noise.loop('pink', 1).connect(band).connect(chop).connect(this.level);
+    noise.loop('pink', 1).connect(band).connect(chop).connect(this.synth);
     blade.connect(chopDepth).connect(chop.gain);
 
     for (const param of [blade.detune, shaft.detune, band.detune]) {
@@ -69,6 +78,32 @@ class Fan {
     }
     blade.start();
     shaft.start();
+  }
+
+  // Crossfade to a recording, or back to synthesis when there is none.
+  play(clip: LoadedSample | null, gain: number, time: number, fadeSec: number): void {
+    const { ctx } = this;
+    const tc = fadeSec / 3;
+    const old = this.recording;
+    if (old) {
+      old.amp.gain.setTargetAtTime(0, time, tc);
+      old.source.stop(time + fadeSec * 2);
+      old.source.onended = () => {
+        old.source.disconnect();
+        old.amp.disconnect();
+      };
+    }
+    this.recording = null;
+    this.synth.gain.setTargetAtTime(clip ? 0 : 1, time, tc);
+    if (!clip) return;
+    const source = new AudioBufferSourceNode(ctx, { buffer: clip.buffer, loop: true });
+    const amp = new GainNode(ctx, { gain: 0 });
+    this.speed.connect(source.detune);
+    this.wander.connect(source.detune);
+    source.connect(amp).connect(this.level);
+    source.start(time, rand(0, clip.buffer.duration));
+    amp.gain.setTargetAtTime(gain * (clip.gain ?? 1), time, tc);
+    this.recording = { source, amp };
   }
 
   jumpTo(cents: number, time: number): void {
@@ -93,6 +128,9 @@ export class AirLayer extends Layer<AirConfig> {
   static override readonly triggerLabels = ['FAN UP', 'FAN DOWN'];
 
   fans!: Fan[];
+  vent!: GainNode; // the synthesized air in the vents, which recordings already have
+  private switching: Promise<void> = Promise.resolve();
+  private chosen: string | null = null;
 
   override start(): void {
     this.startRumble();
@@ -104,6 +142,31 @@ export class AirLayer extends Layer<AirConfig> {
     for (const fan of this.fans) fan.setSpeed(0, now, startupTc);
 
     this.events(spin.meanGapSec, spin.minGapSec, (time) => this.changeFanSpeed(time));
+    this.applyModel();
+  }
+
+  override ready(): Promise<void> {
+    return this.switching;
+  }
+
+  // Load the chosen model's recordings, then crossfade every fan to them.
+  // Each fan gets a different loop. A model with no recordings is synthesized.
+  override applyModel(): void {
+    const model = this.engine.settings.models[this.id] ?? this.cfg.defaultModel;
+    if (model === this.chosen) return;
+    this.chosen = model;
+    this.switching = (async () => {
+      const { samples } = this.engine;
+      await samples.load();
+      const entries = samples.find(this.id, { model, kind: 'fan' });
+      const loaded = await Promise.all(entries.map((entry) => samples.ready(entry)));
+      if (this.chosen !== model) return; // chosen again while loading
+      const clips = entries.filter((_, i) => loaded[i]) as LoadedSample[];
+      const { gain, crossfadeSec } = this.cfg.recording;
+      const time = this.ctx.currentTime + 0.05;
+      this.fans.forEach((fan, i) => fan.play(clips.length ? clips[i % clips.length] : null, gain, time, crossfadeSec));
+      this.vent.gain.setTargetAtTime(clips.length ? 0 : 1, time, crossfadeSec / 3);
+    })();
   }
 
   startRumble(): void {
@@ -134,7 +197,8 @@ export class AirLayer extends Layer<AirConfig> {
       noise.loop('pink', side).connect(band).connect(shelf).connect(panner).connect(amp);
       bands.push(band.frequency);
     });
-    amp.connect(this.output);
+    this.vent = new GainNode(ctx);
+    amp.connect(this.vent).connect(this.output);
     this.drift(bands, bandpassHz);
     this.drift(amp.gain, ampDrift, (value) => value * gain);
   }

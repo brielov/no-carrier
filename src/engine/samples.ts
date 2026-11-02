@@ -11,13 +11,20 @@ type Manifest = Record<string, SampleEntry[]>;
 export class SampleBank {
   readonly ctx: BaseAudioContext;
   private readonly layers = new Map<string, SampleEntry[]>();
+  private loading: Promise<void> | null = null;
 
   constructor(ctx: BaseAudioContext) {
     this.ctx = ctx;
   }
 
   // One failed file only loses that file; a missing manifest loses nothing.
-  async load(): Promise<void> {
+  // Safe to call again: everyone waits on the same load.
+  load(): Promise<void> {
+    this.loading ??= this.fetchAll();
+    return this.loading;
+  }
+
+  private async fetchAll(): Promise<void> {
     let manifest: Manifest;
     try {
       const response = await fetch(MANIFEST);

@@ -264,6 +264,7 @@ export class Engine {
   setModel(id: string, model: string): void {
     this.settings.models[id] = model;
     this.notifyChange();
+    if (this.ctx) this.layers.get(id)?.applyModel();
     if (!this.powered || !this.operating) return;
     this.layers.get(id)?.previewModel(this.audio.currentTime + 0.03);
     this.scheduler.tick();

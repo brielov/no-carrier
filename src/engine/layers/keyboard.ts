@@ -61,14 +61,12 @@ export class KeyboardLayer extends Layer<LayerConfigs['keyboard']> {
 
   // Never the same clip twice running: that is what makes samples sound fake.
   pressRecorded(time: number, clips: LoadedSample[], { level = 1 }: Key): void {
-    const { models, recording } = this.cfg;
-    const { gain, pitchVary, levelVaryDb } = recording;
+    const { gain, pitchVary, levelVaryDb } = this.cfg.recording;
     const others = clips.filter((clip) => clip !== this.lastClip);
     const clip = pick(others.length ? others : clips);
     this.lastClip = clip;
-    const model = models.find(({ id }) => id === clip.model);
     this.playSample(time, clip, {
-      gain: varyDb(gain * model!.gain * level, levelVaryDb),
+      gain: varyDb(gain * level, levelVaryDb),
       pitch: rand(1 - pitchVary, 1 + pitchVary),
       dest: this.dest,
     });

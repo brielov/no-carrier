@@ -1,6 +1,7 @@
 import type { LayerConfigs } from '../config';
+import type { LoadedSample } from '../types';
 import { Layer, type Triggers } from './layer';
-import { rand, randInt, randRange, varyDb } from '../random';
+import { pick, rand, randInt, randRange, varyDb } from '../random';
 
 const BANKS = 'ABCD';
 
@@ -13,6 +14,7 @@ export class RelayLayer extends Layer<LayerConfigs['relay']> {
   static override readonly triggerLabels = ['CLICK'];
 
   positions!: GainNode[];
+  private lastClip?: LoadedSample;
 
   override start(): void {
     const { meanIdleSec, minIdleSec, panWidth } = this.cfg;
@@ -22,6 +24,10 @@ export class RelayLayer extends Layer<LayerConfigs['relay']> {
 
   override triggers(): Triggers {
     return { CLICK: (time: number) => this.cluster(time) };
+  }
+
+  override previewModel(time: number): void {
+    this.cluster(time);
   }
 
   cluster(time: number): void {
@@ -35,6 +41,11 @@ export class RelayLayer extends Layer<LayerConfigs['relay']> {
   }
 
   click(time: number, dest: AudioNode): void {
+    const clips = this.modelSamples('click');
+    if (clips.length) {
+      this.clickRecorded(time, dest, clips);
+      return;
+    }
     const { hitGain, levelVaryDb, pitchVary, bounce } = this.cfg;
     const pitch = rand(1 - pitchVary, 1 + pitchVary);
     let gain = varyDb(hitGain, levelVaryDb);
@@ -46,5 +57,19 @@ export class RelayLayer extends Layer<LayerConfigs['relay']> {
       gain *= bounce.decay;
       this.hit(at, 'relay', { gain, pitch: pitch * 1.06, dest });
     }
+  }
+
+  // A real relay. Never the same click twice running.
+  clickRecorded(time: number, dest: AudioNode, clips: LoadedSample[]): void {
+    const { recording, levelVaryDb, models } = this.cfg;
+    const others = clips.filter((clip) => clip !== this.lastClip);
+    const clip = pick(others.length ? others : clips);
+    this.lastClip = clip;
+    const trim = models.find(({ id }) => id === clip.model)?.gain ?? 1;
+    this.playSample(time, clip, {
+      gain: varyDb(recording.gain * trim, levelVaryDb),
+      pitch: rand(1 - recording.pitchVary, 1 + recording.pitchVary),
+      dest,
+    });
   }
 }

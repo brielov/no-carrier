@@ -34,9 +34,13 @@ place to look.
 1. Put the file under `public/samples/<layer>/`. WAV, mono or stereo, any sample rate.
 2. List it in `public/samples/manifest.json` with its `kind`, and `model` where the
    layer has a choice of machine. The README describes the values.
-3. Add a row to the sources table in the README, linking the original.
+3. Run `npm run levels`. It measures every recording and writes a `gain` into
+   the manifest, so a new take sits at the same level as its neighbours and
+   every model of a machine is equally loud. The audio files are left as they
+   are; `npm run levels -- --check` reports without writing.
+4. Add a row to the sources table in the README, linking the original.
 
-Trim silence at the edges, keep levels consistent with similar files, and avoid
+Trim silence at the edges and avoid
 fades on mechanical sounds: real machines start and stop abruptly.
 
 ## Writing transmissions

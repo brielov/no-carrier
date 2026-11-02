@@ -113,6 +113,15 @@ export class Layer<C extends LayerConfig = LayerConfig> {
   // Play something typical of the chosen model, so it can be heard.
   previewModel(_time: number): void {}
 
+  // The chosen model changed (or the layer just started). For layers whose
+  // continuous sound depends on the model; event layers read it as they play.
+  applyModel(): void {}
+
+  // Resolves once anything the layer needs to sound right has loaded.
+  ready(): Promise<void> {
+    return Promise.resolve();
+  }
+
   switchPower(level: number, time: number, tc: number): void {
     this.mains.gain.cancelScheduledValues(time);
     this.mains.gain.setTargetAtTime(level, time, tc);
@@ -260,9 +269,11 @@ export class Layer<C extends LayerConfig = LayerConfig> {
   // Play a recording from the sample bank, a little different each time.
   // offset and duration pick a stretch of it; fadeSec softens that stretch's
   // edges, and lowpassHz darkens this one playback. Returns the time it takes.
-  playSample(time: number, { buffer }: LoadedSample, options: SampleOptions = {}): number {
+  playSample(time: number, { buffer, gain: trim = 1, pitch: rate = 1 }: LoadedSample, options: SampleOptions = {}): number {
     if (!this.claimVoice()) return 0;
-    const { gain = 1, pitch = 1, dest = this.output, offset = 0, duration, fadeSec, lowpassHz } = options;
+    const { dest = this.output, offset = 0, duration, fadeSec, lowpassHz } = options;
+    const pitch = (options.pitch ?? 1) * rate;
+    const gain = (options.gain ?? 1) * trim; // the manifest's gain evens out recording levels
     const { ctx } = this;
     const seconds = duration ?? buffer.duration - offset;
     const heard = seconds / pitch;

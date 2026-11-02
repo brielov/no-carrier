@@ -107,15 +107,19 @@ back to its synthesized sound, and the app works with the folder removed.
 
 Each manifest key is a layer, holding a list of files. For layers with a choice
 of machine, `model` is an id from that layer's `models` in `src/engine/config.ts`.
+`gain` evens out levels and is written by `npm run levels`; `pitch` sets a
+recording's own playback speed; `lazy` files load only when first needed.
 
 | Layer | `kind` values |
 | --- | --- |
+| `air` | `fan`: a seamless loop, one per fan (`lazy`, loaded when its model is chosen) |
 | `drive` | `short`, `long`, `recal` (a rare heavy event: heads recalibrating) |
 | `keyboard` | `key`, `heavy` |
+| `relay` | `click`, one switching per file |
 | `tape` | `shuttle` |
 | `printer` | `line`, one whole printed line per file |
 | `modem` | `handshake`, `data` |
-| `signal` | `morse`, `data`, `carrier`, `time` (with its `mhz`), `broadcast` (with `speaker` and its words in `text`; `lazy` files load when first played) |
+| `signal` | `morse`, `data`, `carrier`, `time` (with its `mhz`), `broadcast` (with `speaker` and its words in `text`; `lazy`) |
 | `power` | the sounds of the power sequence, named in `src/engine/power.ts` |
 | `hull` | `tick`, `creak` |
 | `antenna` | `motor` |
@@ -130,6 +134,12 @@ Use mono or stereo WAV at any sample rate. To find more, search
 
 | Files | Source | Licence |
 | --- | --- | --- |
+| `air/server-*` | [server room binaural](https://freesound.org/s/422540/) by dkaufman | CC0 |
+| `air/rack-*` | [AMBTech_Server Room Noise 01](https://freesound.org/s/715475/) by KVV_Audio | CC0 |
+| `air/fan-*` | [Object_Fan_Server_Room](https://freesound.org/s/465613/) by Nox_Sound | CC0 |
+| `relay/crossbar-*` | [Crossbar Timing Relays](https://freesound.org/s/513818/) by 115VAC | CC0 |
+| `relay/switchboard-*` | [Old_Telephone_Switchboard_Electromechanical_Relays](https://freesound.org/s/859577/) by ortseng | CC0 |
+| `relay/heavy-*` | [Electrical Relays, Very Large](https://freesound.org/s/870770/) by CHallSmith, and [Contactor/motor overload relay noises](https://freesound.org/s/807384/) by tt_runscript | CC0 |
 | `drive/pc-*` | [oldcomputerbootingup](https://freesound.org/s/328683/) by vacuumfan7072 | CC0 |
 | `drive/st277n-*` | [1980s Seagate ST277N 63MB SCSI hard drive](https://freesound.org/s/475216/) by jodybruchon | CC0 |
 | `drive/caviar-*` | [Caviar 32500](https://freesound.org/s/116033/) by galeku | CC0 |
@@ -137,12 +147,19 @@ Use mono or stereo WAV at any sample rate. To find more, search
 | `hull/tick-*` | [Clicking Engine Cooldown](https://freesound.org/s/539514/) by CmdRobot | CC0 |
 | `hull/creak-*` | [Foley_Object_Metal_Oven_Creaks_Mono](https://freesound.org/s/585734/) by Nox_Sound | CC0 |
 | `antenna/motor-a.wav` | [Servo motor working](https://freesound.org/s/723999/) by D31V228 | CC0 |
+| `antenna/motor-b.wav` to `motor-e.wav` | [A satellite dish motor recorded 10m away](https://freesound.org/s/645645/) by felix.blume | CC0 |
+| `antenna/motor-f.wav` | [SFX Electric ACtuator Under Load 1](https://freesound.org/s/683806/) by mpuffenbarger | CC0 |
+| `antenna/motor-g.wav` | [Electric Motor Whir](https://freesound.org/s/125401/) by jasonLON | CC0 |
 | `thrusters/puff-a.wav`, `puff-b.wav` | [release_air_pffft](https://freesound.org/s/131302/) by reg7783 | CC0 |
 | `thrusters/puff-c.wav` | [Valve_1(air, release)](https://freesound.org/s/475427/) by o_ciz | CC0 |
-| `lifesupport/run-a.wav`, `run-b.wav` | [oxygen concentrator close prospect](https://freesound.org/s/378147/) by kb7clx | CC0 |
-| `lifesupport/run-c.wav` | [Home Oxygen Concentrator](https://freesound.org/s/346967/) by kb7clx | CC0 |
+| `thrusters/puff-d.wav` | [ventiel lossen](https://freesound.org/s/568858/) by gecop | CC0 |
+| `thrusters/puff-e.wav` | [Air compressor valve](https://freesound.org/s/185515/) by soneproject | CC0 |
+| `lifesupport/run-*` | [oxygen concentrator close prospect](https://freesound.org/s/378147/) by kb7clx | CC0 |
 | `hydroponics/water-*` | [Aquarium Pump and Bubbles](https://freesound.org/s/870769/) by CHallSmith | CC0 |
 | `hydroponics/trickle-a.wav` | [trickle](https://freesound.org/s/189672/) by sangtao | CC0 |
+| `hydroponics/trickle-b.wav` | [trickle of water](https://freesound.org/s/189669/) by sangtao | CC0 |
+| `hydroponics/trickle-c.wav`, `trickle-d.wav` | [Hose gurgle long](https://freesound.org/s/594284/) by Processaurus | CC0 |
+| `hydroponics/trickle-e.wav` | [Trickling Water 5](https://freesound.org/s/349076/) by Yoyodaman234 | CC0 |
 | `signal/time-wwv-*` | [WWV 5 MHz](https://freesound.org/s/625313/) by Bryce835 | CC0 |
 | `signal/time-chu-*` | [CHU call sign shortwave time signal](https://freesound.org/s/626118/) by klankbeeld | CC0 |
 | `drive/vintage-*` | [Vintage Hard Drive Read and Idle](https://freesound.org/s/493891/) by Crinkem | CC0 |
@@ -151,6 +168,9 @@ Use mono or stereo WAV at any sample rate. To find more, search
 | `modem/handshake-a.wav`, `modem/data-a.wav` | [modem_dial](https://freesound.org/s/188828/) by 0ktober | CC0 |
 | `modem/handshake-b.wav`, `modem/data-b.wav` | [The Sound of dial-up Internet](https://freesound.org/s/546450/) by wtermini | CC0 |
 | `modem/handshake-c.wav` | [modem1200](https://freesound.org/s/78657/) by guitarguy1985 | CC0 |
+| `modem/handshake-d.wav`, `modem/data-c.wav` | [Dial-up_sound](https://freesound.org/s/658932/) by thearchiveguy99 | CC0 |
+| `modem/handshake-e.wav`, `modem/data-d.wav` | [Handshake Early Internet](https://freesound.org/s/868979/) by Boscoricardo17 | CC0 |
+| `modem/data-e.wav` | [Packet-N4LYD-K7MCE](https://freesound.org/s/697594/) by dylanmcnamee | CC0 |
 | `keyboard/office-*` | [Keyboard typing in office](https://freesound.org/s/399823/) by BonnyOrbit | CC0 |
 | `keyboard/soft-*` | [computer_keyboard_slow_1](https://freesound.org/s/417549/) by rui_aires | CC0 |
 | `keyboard/mech-*` | [Mechanical keyboard clicking](https://freesound.org/s/412926/) by humi74 | CC0 |

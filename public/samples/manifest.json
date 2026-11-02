@@ -3,157 +3,188 @@
     {
       "file": "drive/pc-short-01.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-02.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-03.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-04.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-05.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-06.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-07.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-08.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-09.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.807
     },
     {
       "file": "drive/pc-short-10.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.697
     },
     {
       "file": "drive/pc-short-11.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-12.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-13.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-14.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-15.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-short-16.wav",
       "model": "pc",
-      "kind": "short"
+      "kind": "short",
+      "gain": 0.773
     },
     {
       "file": "drive/pc-long-01.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-02.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-03.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-04.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.83
     },
     {
       "file": "drive/pc-long-05.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 1.044
     },
     {
       "file": "drive/pc-long-06.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-07.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-08.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-09.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-10.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-11.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-12.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-13.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-14.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/pc-long-15.wav",
       "model": "pc",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.924
     },
     {
       "file": "drive/caviar-short-01.wav",
@@ -173,52 +204,68 @@
     {
       "file": "drive/caviar-long-01.wav",
       "model": "caviar",
-      "kind": "long"
+      "kind": "long",
+      "gain": 1.12
     },
     {
       "file": "drive/caviar-long-02.wav",
       "model": "caviar",
-      "kind": "long"
+      "kind": "long",
+      "gain": 1.12
     },
     {
       "file": "drive/caviar-long-03.wav",
       "model": "caviar",
-      "kind": "long"
+      "kind": "long",
+      "gain": 1.12
     },
     {
       "file": "drive/caviar-long-04.wav",
       "model": "caviar",
-      "kind": "long"
+      "kind": "long",
+      "gain": 1.12
     },
     {
       "file": "drive/vintage-short-01.wav",
       "model": "vintage",
-      "kind": "short"
+      "kind": "short",
+      "gain": 1.094
     },
     {
       "file": "drive/vintage-short-02.wav",
       "model": "vintage",
-      "kind": "short"
+      "kind": "short",
+      "gain": 1.094
     },
     {
       "file": "drive/vintage-short-03.wav",
       "model": "vintage",
-      "kind": "short"
+      "kind": "short",
+      "gain": 1.094
     },
     {
       "file": "drive/vintage-short-04.wav",
       "model": "vintage",
-      "kind": "short"
+      "kind": "short",
+      "gain": 1.094
     },
     {
       "file": "drive/vintage-short-05.wav",
       "model": "vintage",
-      "kind": "short"
+      "kind": "short",
+      "gain": 1.064
     },
     {
       "file": "drive/vintage-long-01.wav",
       "model": "vintage",
-      "kind": "long"
+      "kind": "long",
+      "gain": 1.082
+    },
+    {
+      "file": "drive/vintage-long-02.wav",
+      "model": "vintage",
+      "kind": "long",
+      "gain": 1.082
     },
     {
       "file": "drive/st277n-short-01.wav",
@@ -283,52 +330,62 @@
     {
       "file": "drive/st277n-long-01.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-02.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-03.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-04.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-05.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-06.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-07.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-08.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-09.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/st277n-long-10.wav",
       "model": "st277n",
-      "kind": "long"
+      "kind": "long",
+      "gain": 0.897
     },
     {
       "file": "drive/recal-02.wav",
@@ -378,7 +435,8 @@
     },
     {
       "file": "printer/line-a-11.wav",
-      "kind": "line"
+      "kind": "line",
+      "gain": 1.77
     },
     {
       "file": "printer/line-a-12.wav",
@@ -461,83 +519,118 @@
     {
       "file": "modem/data-b.wav",
       "kind": "data"
+    },
+    {
+      "file": "modem/handshake-d.wav",
+      "kind": "handshake"
+    },
+    {
+      "file": "modem/handshake-e.wav",
+      "kind": "handshake"
+    },
+    {
+      "file": "modem/data-c.wav",
+      "kind": "data"
+    },
+    {
+      "file": "modem/data-d.wav",
+      "kind": "data"
+    },
+    {
+      "file": "modem/data-e.wav",
+      "kind": "data"
     }
   ],
   "keyboard": [
     {
       "file": "keyboard/office-heavy-01.wav",
       "model": "office",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.162
     },
     {
       "file": "keyboard/office-heavy-02.wav",
       "model": "office",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.162
     },
     {
       "file": "keyboard/office-heavy-03.wav",
       "model": "office",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.162
     },
     {
       "file": "keyboard/office-heavy-04.wav",
       "model": "office",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.162
     },
     {
       "file": "keyboard/office-heavy-05.wav",
       "model": "office",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.162
     },
     {
       "file": "keyboard/office-heavy-06.wav",
       "model": "office",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.162
     },
     {
       "file": "keyboard/office-key-01.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-02.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.888
     },
     {
       "file": "keyboard/office-key-03.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-04.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-05.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-06.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-07.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-08.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-09.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.216
     },
     {
       "file": "keyboard/office-key-10.wav",
@@ -547,92 +640,110 @@
     {
       "file": "keyboard/office-key-11.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-12.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-13.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-14.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-15.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.095
     },
     {
       "file": "keyboard/office-key-16.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-17.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-18.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-19.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-20.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-21.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-22.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-23.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/office-key-24.wav",
       "model": "office",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.061
     },
     {
       "file": "keyboard/soft-heavy-01.wav",
       "model": "soft",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.924
     },
     {
       "file": "keyboard/soft-heavy-02.wav",
       "model": "soft",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.924
     },
     {
       "file": "keyboard/soft-heavy-03.wav",
       "model": "soft",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.924
     },
     {
       "file": "keyboard/soft-heavy-04.wav",
       "model": "soft",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.924
     },
     {
       "file": "keyboard/soft-heavy-05.wav",
@@ -642,402 +753,482 @@
     {
       "file": "keyboard/soft-heavy-06.wav",
       "model": "soft",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.924
     },
     {
       "file": "keyboard/soft-key-01.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-02.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-03.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-04.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-05.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-06.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-07.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-08.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-09.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-10.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-11.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-12.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-13.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-14.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-15.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-16.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-17.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-18.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-19.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-20.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-21.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-22.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-23.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/soft-key-24.wav",
       "model": "soft",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.943
     },
     {
       "file": "keyboard/mech-heavy-01.wav",
       "model": "mech",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.083
     },
     {
       "file": "keyboard/mech-heavy-02.wav",
       "model": "mech",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.083
     },
     {
       "file": "keyboard/mech-heavy-03.wav",
       "model": "mech",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.083
     },
     {
       "file": "keyboard/mech-heavy-04.wav",
       "model": "mech",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.083
     },
     {
       "file": "keyboard/mech-heavy-05.wav",
       "model": "mech",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.083
     },
     {
       "file": "keyboard/mech-heavy-06.wav",
       "model": "mech",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 1.083
     },
     {
       "file": "keyboard/mech-key-01.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-02.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-03.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-04.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-05.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-06.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-07.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-08.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-09.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.137
     },
     {
       "file": "keyboard/mech-key-10.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-11.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-12.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.233
     },
     {
       "file": "keyboard/mech-key-13.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-14.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-15.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-16.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-17.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-18.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-19.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-20.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-21.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-22.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.181
     },
     {
       "file": "keyboard/mech-key-23.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/mech-key-24.wav",
       "model": "mech",
-      "kind": "key"
+      "kind": "key",
+      "gain": 1.189
     },
     {
       "file": "keyboard/modelf-heavy-01.wav",
       "model": "modelf",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.756
     },
     {
       "file": "keyboard/modelf-heavy-02.wav",
       "model": "modelf",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.756
     },
     {
       "file": "keyboard/modelf-heavy-03.wav",
       "model": "modelf",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.756
     },
     {
       "file": "keyboard/modelf-heavy-04.wav",
       "model": "modelf",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.756
     },
     {
       "file": "keyboard/modelf-heavy-05.wav",
       "model": "modelf",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.943
     },
     {
       "file": "keyboard/modelf-heavy-06.wav",
       "model": "modelf",
-      "kind": "heavy"
+      "kind": "heavy",
+      "gain": 0.756
     },
     {
       "file": "keyboard/modelf-key-01.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-02.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-03.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-04.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-05.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-06.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-07.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-08.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-09.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-10.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-11.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-12.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-13.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.781
     },
     {
       "file": "keyboard/modelf-key-14.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-15.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-16.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-17.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-18.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     },
     {
       "file": "keyboard/modelf-key-19.wav",
       "model": "modelf",
-      "kind": "key"
+      "kind": "key",
+      "gain": 0.815
     }
   ],
   "power": [
@@ -1095,7 +1286,8 @@
     {
       "file": "tape/tonal-a.wav",
       "model": "tonal",
-      "kind": "shuttle"
+      "kind": "shuttle",
+      "gain": 0.679
     }
   ],
   "signal": [
@@ -1679,12 +1871,41 @@
     {
       "file": "antenna/motor-a.wav",
       "kind": "motor"
+    },
+    {
+      "file": "antenna/motor-b.wav",
+      "kind": "motor",
+      "pitch": 1.8
+    },
+    {
+      "file": "antenna/motor-c.wav",
+      "kind": "motor",
+      "pitch": 1.8
+    },
+    {
+      "file": "antenna/motor-d.wav",
+      "kind": "motor",
+      "pitch": 1.8
+    },
+    {
+      "file": "antenna/motor-e.wav",
+      "kind": "motor",
+      "pitch": 1.8
+    },
+    {
+      "file": "antenna/motor-f.wav",
+      "kind": "motor"
+    },
+    {
+      "file": "antenna/motor-g.wav",
+      "kind": "motor"
     }
   ],
   "thrusters": [
     {
       "file": "thrusters/puff-a.wav",
-      "kind": "puff"
+      "kind": "puff",
+      "gain": 0.772
     },
     {
       "file": "thrusters/puff-b.wav",
@@ -1693,6 +1914,15 @@
     {
       "file": "thrusters/puff-c.wav",
       "kind": "puff"
+    },
+    {
+      "file": "thrusters/puff-d.wav",
+      "kind": "puff"
+    },
+    {
+      "file": "thrusters/puff-e.wav",
+      "kind": "puff",
+      "gain": 1.202
     }
   ],
   "lifesupport": [
@@ -1706,6 +1936,10 @@
     },
     {
       "file": "lifesupport/run-c.wav",
+      "kind": "run"
+    },
+    {
+      "file": "lifesupport/run-d.wav",
       "kind": "run"
     }
   ],
@@ -1721,6 +1955,420 @@
     {
       "file": "hydroponics/trickle-a.wav",
       "kind": "trickle"
+    },
+    {
+      "file": "hydroponics/trickle-b.wav",
+      "kind": "trickle",
+      "gain": 1.734
+    },
+    {
+      "file": "hydroponics/trickle-c.wav",
+      "kind": "trickle"
+    },
+    {
+      "file": "hydroponics/trickle-d.wav",
+      "kind": "trickle"
+    },
+    {
+      "file": "hydroponics/trickle-e.wav",
+      "kind": "trickle"
+    }
+  ],
+  "air": [
+    {
+      "file": "air/server-1.wav",
+      "model": "server",
+      "kind": "fan",
+      "lazy": true,
+      "gain": 0.902
+    },
+    {
+      "file": "air/server-2.wav",
+      "model": "server",
+      "kind": "fan",
+      "lazy": true,
+      "gain": 0.902
+    },
+    {
+      "file": "air/rack-1.wav",
+      "model": "rack",
+      "kind": "fan",
+      "lazy": true
+    },
+    {
+      "file": "air/rack-2.wav",
+      "model": "rack",
+      "kind": "fan",
+      "lazy": true
+    },
+    {
+      "file": "air/fan-1.wav",
+      "model": "fan",
+      "kind": "fan",
+      "lazy": true,
+      "gain": 1.295
+    },
+    {
+      "file": "air/fan-2.wav",
+      "model": "fan",
+      "kind": "fan",
+      "lazy": true,
+      "gain": 1.295
+    }
+  ],
+  "relay": [
+    {
+      "file": "relay/crossbar-01.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.109
+    },
+    {
+      "file": "relay/crossbar-02.wav",
+      "model": "crossbar",
+      "kind": "click"
+    },
+    {
+      "file": "relay/crossbar-03.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.303
+    },
+    {
+      "file": "relay/crossbar-04.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.045
+    },
+    {
+      "file": "relay/crossbar-05.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.046
+    },
+    {
+      "file": "relay/crossbar-06.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.105
+    },
+    {
+      "file": "relay/crossbar-07.wav",
+      "model": "crossbar",
+      "kind": "click"
+    },
+    {
+      "file": "relay/crossbar-08.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.3
+    },
+    {
+      "file": "relay/crossbar-09.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 0.795
+    },
+    {
+      "file": "relay/crossbar-10.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.04
+    },
+    {
+      "file": "relay/crossbar-11.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 0.669
+    },
+    {
+      "file": "relay/crossbar-12.wav",
+      "model": "crossbar",
+      "kind": "click"
+    },
+    {
+      "file": "relay/crossbar-13.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 0.837
+    },
+    {
+      "file": "relay/crossbar-14.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 0.8
+    },
+    {
+      "file": "relay/crossbar-15.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.195
+    },
+    {
+      "file": "relay/crossbar-16.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 0.676
+    },
+    {
+      "file": "relay/crossbar-17.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 0.705
+    },
+    {
+      "file": "relay/crossbar-18.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 0.831
+    },
+    {
+      "file": "relay/crossbar-19.wav",
+      "model": "crossbar",
+      "kind": "click"
+    },
+    {
+      "file": "relay/crossbar-20.wav",
+      "model": "crossbar",
+      "kind": "click",
+      "gain": 1.301
+    },
+    {
+      "file": "relay/heavy-01.wav",
+      "model": "heavy",
+      "kind": "click"
+    },
+    {
+      "file": "relay/heavy-02.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.585
+    },
+    {
+      "file": "relay/heavy-03.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.731
+    },
+    {
+      "file": "relay/heavy-04.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.866
+    },
+    {
+      "file": "relay/heavy-05.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.601
+    },
+    {
+      "file": "relay/heavy-06.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.866
+    },
+    {
+      "file": "relay/heavy-07.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 1.508
+    },
+    {
+      "file": "relay/heavy-08.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 1.486
+    },
+    {
+      "file": "relay/heavy-09.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.866
+    },
+    {
+      "file": "relay/heavy-10.wav",
+      "model": "heavy",
+      "kind": "click"
+    },
+    {
+      "file": "relay/heavy-11.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.945
+    },
+    {
+      "file": "relay/heavy-12.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.866
+    },
+    {
+      "file": "relay/heavy-13.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.866
+    },
+    {
+      "file": "relay/heavy-14.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.768
+    },
+    {
+      "file": "relay/heavy-15.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.702
+    },
+    {
+      "file": "relay/heavy-16.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.846
+    },
+    {
+      "file": "relay/heavy-17.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.866
+    },
+    {
+      "file": "relay/heavy-18.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.82
+    },
+    {
+      "file": "relay/heavy-19.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 0.866
+    },
+    {
+      "file": "relay/heavy-20.wav",
+      "model": "heavy",
+      "kind": "click",
+      "gain": 2.006
+    },
+    {
+      "file": "relay/switchboard-01.wav",
+      "model": "switchboard",
+      "kind": "click"
+    },
+    {
+      "file": "relay/switchboard-02.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-03.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-04.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.375
+    },
+    {
+      "file": "relay/switchboard-05.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.202
+    },
+    {
+      "file": "relay/switchboard-06.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-07.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-08.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-09.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-10.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.594
+    },
+    {
+      "file": "relay/switchboard-11.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-12.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 0.65
+    },
+    {
+      "file": "relay/switchboard-13.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-14.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.132
+    },
+    {
+      "file": "relay/switchboard-15.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-16.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.229
+    },
+    {
+      "file": "relay/switchboard-17.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-18.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 1.075
+    },
+    {
+      "file": "relay/switchboard-19.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 0.788
+    },
+    {
+      "file": "relay/switchboard-20.wav",
+      "model": "switchboard",
+      "kind": "click",
+      "gain": 0.551
     }
   ]
 }

@@ -30,7 +30,7 @@ class SystemLayer<C extends LayerConfig = LayerConfig> extends Layer<C> {
     const clips = this.engine.samples.loaded(this.id, { kind });
     if (!clips.length) return 0;
     const clip = pick(clips);
-    const length = Math.min(seconds * pitch, clip.buffer.duration);
+    const length = Math.min(seconds * pitch * (clip.pitch ?? 1), clip.buffer.duration);
     return this.playSample(time, clip, {
       gain: varyDb(gain, 1.5),
       pitch,
