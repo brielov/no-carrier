@@ -67,6 +67,7 @@ export class PowerSequence {
     });
     this.step(time, steps.fans, (at) => {
       this.layer('air')?.powerUp(at);
+      for (const id of ['lifesupport', 'hydroponics']) this.layer(id)?.switchPower(1, at, 0.001);
       engine.report('COOLING FANS ON');
     });
     this.step(time, steps.relays, (at) => {
@@ -93,7 +94,7 @@ export class PowerSequence {
       engine.report('SELF TEST PASSED');
     });
     this.step(time, steps.receiver, (at) => {
-      for (const id of ['signal', 'drone', 'morse', 'teleprinter', 'carrier', 'broadcast']) {
+      for (const id of ['signal', 'drone', 'morse', 'teleprinter', 'carrier', 'broadcast', 'timesignal', 'antenna', 'thrusters']) {
         this.layer(id)?.switchPower(1, at, cfg.outsideRiseTc);
       }
       engine.operating = true;
@@ -113,6 +114,7 @@ export class PowerSequence {
     this.sound(time, 'breakerOff', 'relay', gains.breaker);
     this.step(time, off.outputsCut, (at) => {
       for (const id of ['beeps', 'printer', 'modem']) this.layer(id)?.switchPower(0, at, 0.008);
+      for (const id of ['lifesupport', 'hydroponics', 'antenna', 'thrusters']) this.layer(id)?.switchPower(0, at, 0.12);
       this.layer('signal')?.switchPower(0, at, 0.03);
       this.layer('tape')?.powerDown(at);
     });

@@ -56,3 +56,11 @@ export class BroadcastLayer extends RadioPart {
     this.receiver?.broadcast(time, this);
   }
 }
+
+export class TimeSignalLayer extends RadioPart {
+  static id = 'timesignal';
+
+  tuneIn(time) {
+    this.receiver?.timeSignal(time, this);
+  }
+}

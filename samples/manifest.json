@@ -1539,6 +1539,42 @@
       "speaker": "wren",
       "lazy": true,
       "text": "Wren again. Still just me on this band, I think. The stars are very clear tonight. If you're up there, look down. We waved."
+    },
+    {
+      "file": "signal/time-wwv-1.wav",
+      "kind": "time",
+      "mhz": "5.000",
+      "lazy": true
+    },
+    {
+      "file": "signal/time-wwv-2.wav",
+      "kind": "time",
+      "mhz": "5.000",
+      "lazy": true
+    },
+    {
+      "file": "signal/time-wwv-3.wav",
+      "kind": "time",
+      "mhz": "5.000",
+      "lazy": true
+    },
+    {
+      "file": "signal/time-wwv-4.wav",
+      "kind": "time",
+      "mhz": "5.000",
+      "lazy": true
+    },
+    {
+      "file": "signal/time-chu-1.wav",
+      "kind": "time",
+      "mhz": "7.850",
+      "lazy": true
+    },
+    {
+      "file": "signal/time-chu-2.wav",
+      "kind": "time",
+      "mhz": "7.850",
+      "lazy": true
     }
   ],
   "hull": [
@@ -1637,6 +1673,54 @@
     {
       "file": "hull/tick-16.wav",
       "kind": "tick"
+    }
+  ],
+  "antenna": [
+    {
+      "file": "antenna/motor-a.wav",
+      "kind": "motor"
+    }
+  ],
+  "thrusters": [
+    {
+      "file": "thrusters/puff-a.wav",
+      "kind": "puff"
+    },
+    {
+      "file": "thrusters/puff-b.wav",
+      "kind": "puff"
+    },
+    {
+      "file": "thrusters/puff-c.wav",
+      "kind": "puff"
+    }
+  ],
+  "lifesupport": [
+    {
+      "file": "lifesupport/run-a.wav",
+      "kind": "run"
+    },
+    {
+      "file": "lifesupport/run-b.wav",
+      "kind": "run"
+    },
+    {
+      "file": "lifesupport/run-c.wav",
+      "kind": "run"
+    }
+  ],
+  "hydroponics": [
+    {
+      "file": "hydroponics/water-a.wav",
+      "kind": "water"
+    },
+    {
+      "file": "hydroponics/water-b.wav",
+      "kind": "water"
+    },
+    {
+      "file": "hydroponics/trickle-a.wav",
+      "kind": "trickle"
     }
   ]
 }

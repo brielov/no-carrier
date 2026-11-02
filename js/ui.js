@@ -22,10 +22,10 @@ const redraws = [];
 const lamps = new Map();
 
 const ZONES = [
-  { id: 'room', name: 'THIS ROOM', layers: ['hum', 'air', 'hull'] },
+  { id: 'room', name: 'THIS ROOM', layers: ['hum', 'air', 'hull', 'lifesupport', 'hydroponics'] },
+  { id: 'outside', name: 'OUTSIDE THE HULL', layers: ['drone', 'thrusters'] },
+  { id: 'radio', name: 'RADIO', layers: ['signal', 'antenna', 'morse', 'teleprinter', 'carrier', 'broadcast', 'timesignal'] },
   { id: 'machines', name: 'MACHINES', layers: ['drive', 'tape', 'relay', 'keyboard', 'beeps', 'printer', 'modem'] },
-  { id: 'outside', name: 'OUTSIDE THE HULL', layers: ['drone'] },
-  { id: 'radio', name: 'RADIO', layers: ['signal', 'morse', 'teleprinter', 'carrier', 'broadcast'] },
 ];
 
 function knob(options) {
@@ -138,6 +138,7 @@ function rackBank(engine, cfg, { id, name, layers }, info) {
   );
   const bank = element('section', { className: 'bank' }, heading, element('div', { className: 'modules' }, ...modules));
   bank.dataset.zone = id;
+  bank.style.setProperty('--modules', layers.length); // banks share a row in proportion to this
   return bank;
 }
 
@@ -349,7 +350,9 @@ export function createUI(engine, cfg, root) {
 
   const info = engine.layerInfo();
   root.querySelector('#profiles').append(...profilePanel(engine, cfg, log, { log, diag }));
-  root.querySelector('#macros').append(
+  const macroKnobs = element('div', { className: 'macro-knobs' });
+  root.querySelector('#macros').append(macroKnobs);
+  macroKnobs.append(
     knob({
       label: { text: 'MASTER' },
       read: () => engine.settings.master,

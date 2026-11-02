@@ -7,7 +7,8 @@ import { RECIPES } from './recipes.js';
 import { SampleBank } from './samples.js';
 import { Story } from './story.js';
 import { Scheduler } from './scheduler.js';
-import { BroadcastLayer, CarrierLayer, MorseLayer, TeleprinterLayer } from './layers/radio.js';
+import { BroadcastLayer, CarrierLayer, MorseLayer, TeleprinterLayer, TimeSignalLayer } from './layers/radio.js';
+import { AntennaLayer, HydroponicsLayer, LifeSupportLayer, ThrustersLayer } from './layers/systems.js';
 import { SignalLayer } from './layers/signal.js';
 import { AirLayer } from './layers/air.js';
 import { BeepLayer } from './layers/beeps.js';
@@ -21,7 +22,7 @@ import { PrinterLayer } from './layers/printer.js';
 import { RelayLayer } from './layers/relay.js';
 import { TapeLayer } from './layers/tape.js';
 
-const LAYERS = [HumLayer, AirLayer, HullLayer, DriveLayer, TapeLayer, RelayLayer, KeyboardLayer, BeepLayer, PrinterLayer, ModemLayer, SignalLayer, MorseLayer, TeleprinterLayer, CarrierLayer, BroadcastLayer, DroneLayer];
+const LAYERS = [HumLayer, AirLayer, HullLayer, LifeSupportLayer, HydroponicsLayer, DriveLayer, TapeLayer, RelayLayer, KeyboardLayer, BeepLayer, PrinterLayer, ModemLayer, SignalLayer, MorseLayer, TeleprinterLayer, CarrierLayer, BroadcastLayer, TimeSignalLayer, AntennaLayer, DroneLayer, ThrustersLayer];
 
 export class Engine {
   constructor(cfg) {

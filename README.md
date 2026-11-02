@@ -101,9 +101,13 @@ of machine, `model` is an id from that layer's `models` in `js/config.js`.
 | `tape` | `shuttle` |
 | `printer` | `line`, one whole printed line per file |
 | `modem` | `handshake`, `data` |
-| `signal` | `morse`, `data`, `carrier`, `broadcast` (with `speaker` and its words in `text`; `lazy` files load when first played) |
+| `signal` | `morse`, `data`, `carrier`, `time` (with its `mhz`), `broadcast` (with `speaker` and its words in `text`; `lazy` files load when first played) |
 | `power` | the sounds of the power sequence, named in `js/power.js` |
 | `hull` | `tick`, `creak` |
+| `antenna` | `motor` |
+| `thrusters` | `puff` |
+| `lifesupport` | `run` |
+| `hydroponics` | `water`, `trickle` |
 
 Use mono or stereo WAV at any sample rate. To find more, search
 [freesound.org](https://freesound.org) and filter by Creative Commons 0.
@@ -118,6 +122,15 @@ Use mono or stereo WAV at any sample rate. To find more, search
 | `drive/recal-02.wav` | [Hard Drive 7200RPM Spin Up, Idle and Spin Down](https://freesound.org/s/465592/) by conath | CC0 |
 | `hull/tick-*` | [Clicking Engine Cooldown](https://freesound.org/s/539514/) by CmdRobot | CC0 |
 | `hull/creak-*` | [Foley_Object_Metal_Oven_Creaks_Mono](https://freesound.org/s/585734/) by Nox_Sound | CC0 |
+| `antenna/motor-a.wav` | [Servo motor working](https://freesound.org/s/723999/) by D31V228 | CC0 |
+| `thrusters/puff-a.wav`, `puff-b.wav` | [release_air_pffft](https://freesound.org/s/131302/) by reg7783 | CC0 |
+| `thrusters/puff-c.wav` | [Valve_1(air, release)](https://freesound.org/s/475427/) by o_ciz | CC0 |
+| `lifesupport/run-a.wav`, `run-b.wav` | [oxygen concentrator close prospect](https://freesound.org/s/378147/) by kb7clx | CC0 |
+| `lifesupport/run-c.wav` | [Home Oxygen Concentrator](https://freesound.org/s/346967/) by kb7clx | CC0 |
+| `hydroponics/water-*` | [Aquarium Pump and Bubbles](https://freesound.org/s/870769/) by CHallSmith | CC0 |
+| `hydroponics/trickle-a.wav` | [trickle](https://freesound.org/s/189672/) by sangtao | CC0 |
+| `signal/time-wwv-*` | [WWV 5 MHz](https://freesound.org/s/625313/) by Bryce835 | CC0 |
+| `signal/time-chu-*` | [CHU call sign shortwave time signal](https://freesound.org/s/626118/) by klankbeeld | CC0 |
 | `drive/vintage-*` | [Vintage Hard Drive Read and Idle](https://freesound.org/s/493891/) by Crinkem | CC0 |
 | `printer/line-a-*` | [dot matrix printer](https://freesound.org/s/320008/) by DisasterServices | CC0 |
 | `printer/line-b-*` | [old dot-matrix printer](https://freesound.org/s/181420/) by viertelnachvier | CC0 |

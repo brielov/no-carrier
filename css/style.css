@@ -46,9 +46,10 @@ body::after {
 }
 
 .console {
+  container: console / inline-size;
   display: grid;
   gap: 12px;
-  max-width: 1180px;
+  max-width: 1880px;
   margin: 0 auto;
   padding: 14px;
   background: var(--enamel);
@@ -139,10 +140,32 @@ select option {
 
 /* The tube: the one thing here that glows */
 
+/* The top of the console: the tube, the main controls and the room plan.
+   One column on a phone, two when there is room, three on a wide screen. */
 .deck {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
+}
+
+@container console (min-width: 760px) {
+  .deck {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .plan-slot {
+    grid-column: 1 / -1;
+  }
+}
+
+@container console (min-width: 1380px) {
+  .deck {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 5fr);
+  }
+
+  .plan-slot {
+    grid-column: auto;
+  }
 }
 
 .crt {
@@ -160,7 +183,8 @@ select option {
   flex-direction: column;
   gap: 8px;
   height: 100%;
-  min-height: 240px;
+  min-height: 220px;
+  max-height: 420px;
   padding: 14px 16px;
   overflow: hidden;
   background: radial-gradient(ellipse at center, #2a1707 0%, var(--tube) 70%, #0d0702 100%);
@@ -236,10 +260,28 @@ body[data-power='on'] .glass {
 }
 
 #macros {
+  container: macros / inline-size;
+}
+
+.macro-knobs {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   justify-items: center;
   gap: 8px;
+}
+
+@container macros (max-width: 420px) {
+  .macro-knobs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 14px;
+  }
+}
+
+@container macros (max-width: 520px) {
+  .macro-knobs .knob.large .knob-dial {
+    width: 68px;
+    height: 68px;
+  }
 }
 
 #profiles {
@@ -338,7 +380,14 @@ body[data-power='on'] .glass {
 
 /* Room plan: the machines seen from above, with you at the bottom */
 
+.plan-slot {
+  display: grid;
+  min-width: 0;
+}
+
 .plan {
+  display: flex;
+  flex-direction: column;
   padding: 8px 12px 28px;
 }
 
@@ -352,8 +401,9 @@ body[data-power='on'] .glass {
 
 .plan-floor {
   position: relative;
-  height: 230px;
-  margin: 0 56px;
+  flex: 1;
+  min-height: 220px;
+  margin: 0 clamp(24px, 5%, 56px);
   background:
     radial-gradient(circle at 50% 100%, transparent 0 32%, rgb(226 187 124 / 0.14) 32% calc(32% + 1px), transparent calc(32% + 1px) 62%, rgb(226 187 124 / 0.14) 62% calc(62% + 1px), transparent calc(62% + 1px)),
     linear-gradient(to right, transparent calc(50% - 0.5px), rgb(226 187 124 / 0.1) calc(50% - 0.5px) calc(50% + 0.5px), transparent calc(50% + 0.5px));
@@ -400,26 +450,21 @@ body[data-power='on'] .glass {
   --lamp: #a15a10;
 }
 
-/* Racks */
+/* Racks: banks share rows in proportion to how many modules they hold, so
+   a wide screen fits a whole bank per row, and small banks pair up. */
 
 .racks {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  --module: 156px;
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
-}
-
-.bank[data-zone='radio'] {
-  grid-column: 1 / -1;
-  grid-row: 2;
-}
-
-.bank[data-zone='machines'] {
-  grid-column: 1 / -1;
-  grid-row: 3;
 }
 
 .bank {
   --lamp: var(--amber);
+  container: bank / inline-size;
+  flex: var(--modules, 1) 1 calc(var(--modules, 1) * (var(--module) + 10px) + 14px);
+  min-width: 0;
   padding: 8px 12px 12px;
   border-top: 3px solid var(--lamp);
 }
@@ -443,11 +488,12 @@ body[data-power='on'] .glass {
 
 .modules {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--module)), 1fr));
   gap: 10px;
 }
 
 .module {
+  container: module / inline-size;
   display: grid;
   align-content: start;
   gap: 8px;
@@ -518,29 +564,19 @@ body[data-power='on'] .lamp::before {
   font-size: 10px;
 }
 
-/* Below this the console becomes a single column */
-
-@media (max-width: 860px) {
-  .deck,
-  .racks {
-    grid-template-columns: minmax(0, 1fr);
+/* A narrow module keeps everything, just a little smaller. */
+@container module (max-width: 190px) {
+  .module .knob-dial {
+    width: 50px;
+    height: 50px;
   }
 
-  .bank[data-zone='machines'],
-  .bank[data-zone='radio'] {
-    grid-row: auto;
-  }
-
-  .glass {
-    min-height: 200px;
-    max-height: 240px;
-  }
-
-  .plan-floor {
-    margin: 0 32px;
+  .module-head {
+    font-size: 12px;
   }
 }
 
+/* Phones: edge to edge, and a smaller nameplate. */
 @media (max-width: 520px) {
   body {
     padding: 0;
@@ -553,14 +589,6 @@ body[data-power='on'] .lamp::before {
 
   h1 {
     font-size: 19px;
-  }
-
-  #macros {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .modules {
-    grid-template-columns: minmax(0, 1fr);
   }
 }
 

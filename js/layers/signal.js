@@ -205,6 +205,8 @@ export class SignalLayer extends Layer {
     const seconds = randRange(scan.durationSec);
     this.listen(time, seconds);
     this.engine.story.attempt();
+    // Outside, the antenna turns to follow the scan.
+    this.engine.layers.get('antenna')?.slew(time, Math.min(seconds * 0.6, 7));
     const lines = randInt(scan.lines);
     const start = randRange(scan.startHz);
     const slide = randRange(scan.slideHz) * (chance(0.5) ? 1 : -1);
@@ -326,6 +328,29 @@ export class SignalLayer extends Layer {
       if (at >= 0) part.event(time + at, `RX: ${line.trim().toUpperCase()}`);
     }
     return seconds;
+  }
+
+  // An automated time station, still counting seconds. Nobody knows who, if
+  // anyone, is left behind it.
+  timeSignal(time, part = this.part('timesignal')) {
+    const takes = this.engine.samples.find('signal', { kind: 'time' });
+    if (!takes.length || this.onAir) return;
+    const take = pick(takes);
+    if (!take.buffer) {
+      this.engine.samples.ready(take).then((ok) => {
+        if (ok && this.engine.operating) this.timeSignal(this.ctx.currentTime + 0.1, part);
+      });
+      return;
+    }
+    const { recording } = this.cfg;
+    const seconds = part.playSample(time, take, {
+      gain: recording.gain * rand(0.8, 1.1),
+      fadeSec: 0.01,
+      dest: part.output,
+    });
+    this.listen(time, seconds, part);
+    part.event(time, `TIME SIGNAL ${take.mhz} MHz ...`);
+    part.event(time + seconds, `${take.mhz} MHz ... LOST`);
   }
 
   // A hand-keyed fragment. Sometimes it is the Meridian, sending real words

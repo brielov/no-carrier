@@ -1,5 +1,5 @@
 const KEY = 'no-carrier-settings';
-const RADIO_PARTS = ['morse', 'teleprinter', 'carrier', 'broadcast'];
+const RADIO_PARTS = ['morse', 'teleprinter', 'carrier', 'broadcast', 'timesignal'];
 
 const clamp = (value, fallback) =>
   Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : fallback;

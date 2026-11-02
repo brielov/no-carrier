@@ -830,6 +830,71 @@ export const CONFIG = {
       minIdleSec: 90,
     },
 
+    timesignal: {
+      label: 'TIME SIGNAL',
+      defaultLevel: 0.45,
+      maxGain: 1,
+      meanIdleSec: 520,
+      minIdleSec: 150,
+    },
+
+    // The capsule's own systems. Each plays a stretch of a real recording,
+    // between the knocks of a switch or valve. edgeSec softens the cut ends.
+    antenna: {
+      label: 'ANTENNA',
+      defaultLevel: 0.45,
+      maxGain: 1,
+      meanIdleSec: 600, // besides turning with every scan
+      minIdleSec: 120,
+      slewSec: { min: 2.5, max: 6 },
+      gain: 0.55,
+      pitch: 0.55, // a big, slow motor
+      lowpassHz: 1300, // heard through the hull
+      edgeSec: 0.05,
+      knockGain: 0.12,
+      knockPitch: 0.6,
+    },
+
+    thrusters: {
+      label: 'THRUSTERS',
+      defaultLevel: 0.45,
+      maxGain: 1,
+      meanIdleSec: 420,
+      minIdleSec: 120,
+      puffs: { min: 1, max: 3 },
+      gapSec: { min: 0.35, max: 1.4 },
+      gain: 0.4,
+      thumpGain: 0.25,
+      lowpassHz: 1400, // outside the hull, felt more than heard
+    },
+
+    lifesupport: {
+      label: 'LIFE SUPPORT',
+      defaultLevel: 0.4,
+      maxGain: 1,
+      meanIdleSec: 240,
+      minIdleSec: 60,
+      runSec: { min: 18, max: 30 },
+      gain: 0.35,
+      edgeSec: 0.12,
+      knockGain: 0.16,
+      knockPitch: 0.55,
+    },
+
+    hydroponics: {
+      label: 'HYDROPONICS',
+      defaultLevel: 0.45,
+      maxGain: 1,
+      meanIdleSec: 300,
+      minIdleSec: 90,
+      runSec: { min: 9, max: 17 },
+      gain: 0.18,
+      trickleGain: 0.13,
+      edgeSec: 0.08,
+      knockGain: 0.1,
+      knockPitch: 0.7,
+    },
+
     drone: {
       label: 'SPACE DRONE',
       defaultLevel: 0.5,
