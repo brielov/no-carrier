@@ -170,6 +170,11 @@ export const CONFIG = {
     },
   },
 
+  recorder: {
+    minutes: [5, 15, 30, 60, 120], // 120 is the longest a browser can render in one piece
+    defaultMinutes: 30,
+  },
+
   scheduler: {
     tickMs: 100, // how often the clock checks for work
     lookaheadSec: 0.5, // how far ahead events are placed on the audio clock

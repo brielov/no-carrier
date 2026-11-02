@@ -52,6 +52,18 @@ Drag a knob up or down (hold Shift for fine control), scroll over it, or focus i
 and use the arrow keys, Page Up and Down, Home and End. Double-click returns it to
 its default. Settings are saved in your browser and can be exported as JSON.
 
+## Recording
+
+**RECORD** saves the sound to a file, to listen to without the app open.
+
+- **LIVE** records what is playing, in real time, as a compressed file of about
+  1 MB a minute (WebM or Ogg with Opus; M4A in Safari). It works on any
+  device. Keep the tab open, in the background if you like, until it finishes.
+- **RENDER** builds the file from your current settings, faster than real time,
+  as a 16-bit WAV. It holds the whole recording in memory first, about 2 GB
+  for an hour, so it suits desktops with plenty of memory. It needs a
+  Chromium-based browser and is limited to 2 hours.
+
 ## Tuning
 
 Every frequency, rate, level and range is in `js/config.js`, with notes on what
@@ -83,6 +95,7 @@ in that file. Press **DEFAULT** to return to the values in `js/config.js`.
 | `js/random.js` | Random helpers and the slow random walk |
 | `js/ui.js` | Console layout, keys, lamps, system log, diagnostics |
 | `js/knob.js` | Rotary knob control |
+| `js/recorder.js` | Recording live and rendering to a file |
 | `samples/` | Recordings and their manifest |
 
 ## Samples

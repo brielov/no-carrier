@@ -1,5 +1,6 @@
 import { createKnob } from './knob.js';
 import { PRESETS } from './presets.js';
+import { Recorder, canRender, renderCost } from './recorder.js';
 import { downloadSettings, sanitize } from './settings.js';
 
 const MAX_LOG_LINES = 200;
@@ -284,8 +285,97 @@ function settingsControls(engine, log) {
   return [exporter, importer, file];
 }
 
+// RECORD: either capture what is playing, or render faster than real time.
+// The panel says plainly what each costs before anything starts.
+function recordControl(engine, cfg) {
+  const recorder = new Recorder(engine);
+  const state = { open: false, mode: 'live', minutes: cfg.recorder.defaultMinutes, progress: 0 };
+  const panel = element('div', { className: 'recorder', hidden: true });
+  const key = pressable('RECORD', () => {
+    state.open = !state.open;
+    draw();
+  }, () => state.open || recorder.busy);
+  const modes = ['LIVE', 'RENDER'].map((text) =>
+    pressable(text, () => {
+      state.mode = text.toLowerCase();
+      draw();
+    }, () => state.mode === text.toLowerCase()),
+  );
+  const length = element(
+    'select',
+    { ariaLabel: 'Recording length' },
+    ...cfg.recorder.minutes.map((minutes) => element('option', { value: minutes, textContent: `${minutes} MIN` })),
+  );
+  length.value = state.minutes;
+  length.addEventListener('change', () => {
+    state.minutes = Number(length.value);
+    draw();
+  });
+  const start = element('button', { type: 'button', className: 'record-start' });
+  const status = element('output', { className: 'record-status' });
+  const note = element('p', { className: 'recorder-note' });
+
+  start.addEventListener('click', async () => {
+    if (recorder.live) {
+      recorder.stopLive();
+    } else if (state.mode === 'live') {
+      recorder.startLive(state.minutes, draw);
+    } else if (!recorder.rendering) {
+      state.progress = 0;
+      const rendering = recorder.render(state.minutes, (progress) => {
+        state.progress = progress;
+        status.textContent = `RENDERING ${Math.floor(progress * 100)}%`;
+      });
+      draw();
+      await rendering;
+    }
+    draw();
+  });
+
+  function draw() {
+    panel.hidden = !state.open && !recorder.busy;
+    const live = state.mode === 'live';
+    for (const control of [...modes, length]) control.disabled = recorder.busy;
+    if (live) {
+      start.textContent = recorder.live ? 'STOP' : 'START';
+      start.disabled = recorder.rendering || (!recorder.live && !engine.powered);
+      note.textContent = engine.powered
+        ? 'Records what you hear, in real time, as a compressed audio file of about 1 MB a minute. Keep this tab open until it finishes; it can stay in the background.'
+        : 'Records what you hear, in real time. Power on first.';
+    } else if (!canRender) {
+      start.textContent = 'START';
+      start.disabled = true;
+      note.textContent = 'Rendering needs a Chromium-based browser, such as Chrome or Edge. In this browser, use LIVE.';
+    } else {
+      const { memoryGB, fileMB } = renderCost(state.minutes);
+      start.textContent = 'START';
+      start.disabled = recorder.busy;
+      note.textContent = `Builds the recording from your current settings, faster than real time. It holds everything in memory first: about ${memoryGB.toFixed(1)} GB for ${state.minutes} minutes, then saves a ${Math.round(fileMB)} MB WAV file. Fine on a desktop with plenty of memory; it may crash this tab on a laptop or phone.`;
+    }
+    if (recorder.live) {
+      const left = recorder.liveRemaining();
+      status.textContent = `RECORDING ${clock(left)}`;
+    } else if (!recorder.rendering) {
+      status.textContent = '';
+    }
+  }
+
+  setInterval(() => {
+    recorder.check();
+    if (recorder.live) draw();
+  }, 1000);
+  redraws.push(draw);
+  panel.append(
+    element('div', { className: 'button-row' }, ...modes, length, start, status),
+    note,
+  );
+  draw();
+  return { key, panel };
+}
+
 function profilePanel(engine, cfg, log, screen) {
   const { director } = engine;
+  const record = recordControl(engine, cfg);
   const presets = Object.keys(PRESETS).map((name) =>
     pressable(name, () => director.preset(name), () => engine.settings.preset === name),
   );
@@ -313,7 +403,7 @@ function profilePanel(engine, cfg, log, screen) {
   };
   return [
       element('div', { className: 'button-row' }, ...presets, reset),
-      element('div', { className: 'button-row' }, drift, sleepControl(engine, cfg)),
+      element('div', { className: 'button-row' }, drift, sleepControl(engine, cfg), record.key),
       element(
         'div',
         { className: 'button-row' },
@@ -321,6 +411,7 @@ function profilePanel(engine, cfg, log, screen) {
         panelKey('DIAGNOSTICS', 'showDiag', screen.diag),
         ...settingsControls(engine, log),
       ),
+      record.panel,
   ];
 }
 
