@@ -8,8 +8,8 @@ message drifts in from another ship, still looping after all these years.
 
 It never repeats. Every event is scheduled at random, every continuous sound
 drifts slowly, and the knobs let you shape the room while it plays. It runs in
-the browser with the Web Audio API: plain HTML, CSS and JavaScript, with no
-dependencies and no build step.
+the browser with the Web Audio API. The sound engine is plain TypeScript with
+no runtime dependencies; the console around it is built with Svelte.
 
 **Listen: <https://no-carrier.pages.dev>** (headphones recommended)
 
@@ -19,16 +19,17 @@ listening. If you would rather read it than hear it,
 
 ## Run it locally
 
+You need [Node.js](https://nodejs.org) 22 or later.
+
 ```sh
-python3 serve.py
+npm install
+npm run dev
 ```
 
-Then open <http://localhost:8000> and press **POWER ON**.
+Then open <http://localhost:5173> and press **POWER ON**.
 
-Use `serve.py` rather than `python3 -m http.server`: it tells the browser not to
-cache, so a reload always gets every current file. A mix of old and new modules
-can leave the app silent. If the system log shows a `FAULT` line, a hard reload
-(Ctrl+Shift+R) is the first thing to try.
+`npm run build` writes the static site to `dist/`, and `npm run preview` serves
+that build. `npm run check` type-checks everything.
 
 ## Using it
 
@@ -66,46 +67,46 @@ its default. Settings are saved in your browser and can be exported as JSON.
 
 ## Tuning
 
-Every frequency, rate, level and range is in `js/config.js`, with notes on what
+Every frequency, rate, level and range is in `src/engine/config.ts`, with notes on what
 each one does. Reload the page to hear a change.
 
 Saved knob positions take priority over the `defaultLevel` and `value` settings
-in that file. Press **DEFAULT** to return to the values in `js/config.js`.
+in that file. Press **DEFAULT** to return to the values in `src/engine/config.ts`.
 
 ## Layout
 
 | Path | What it does |
 | --- | --- |
-| `js/config.js` | All tunable constants |
-| `js/engine.js` | AudioContext, power, settings, layer registry |
-| `js/scheduler.js` | Lookahead scheduler and Poisson event processes |
-| `js/timer-worker.js` | Tick source that is not throttled in background tabs |
-| `js/layers/` | One module per sound layer; `signal.js` is the receiver and `radio.js` what it picks up |
-| `js/effects.js` | Distance, Age, placement, compressor and limiter |
-| `js/power.js` | Power on and off sequences |
-| `js/story.js` | The Halcyon's day count, log notes and broadcast archive |
+| `src/engine/config.ts` | All tunable constants |
+| `src/engine/engine.ts` | AudioContext, power, settings, layer registry |
+| `src/engine/scheduler.ts` | Lookahead scheduler and Poisson event processes |
+| `src/engine/timer-worker.ts` | Tick source that is not throttled in background tabs |
+| `src/engine/layers/` | One module per sound layer; `signal.ts` is the receiver and `radio.ts` what it picks up |
+| `src/engine/effects.ts` | Distance, Age, placement, compressor and limiter |
+| `src/engine/power.ts` | Power on and off sequences |
+| `src/engine/story.ts` | The Halcyon's day count, log notes and broadcast archive |
 | `docs/STORY.md` | The story bible (spoilers) |
-| `js/director.js` | Crossfades, Auto Drift, sleep timer |
-| `js/presets.js` | Preset definitions |
-| `js/settings.js` | Saving, validating and exporting settings |
-| `js/noise.js` | Shared, pre-generated noise loops |
-| `js/hits.js` | Renders mechanical hits from recipes |
-| `js/recipes.js` | Hit recipes measured from real recordings |
-| `js/samples.js` | Optional sample loading |
-| `js/random.js` | Random helpers and the slow random walk |
-| `js/ui.js` | Console layout, keys, lamps, system log, diagnostics |
-| `js/knob.js` | Rotary knob control |
-| `js/recorder.js` | Recording live and rendering to a file |
-| `samples/` | Recordings and their manifest |
+| `src/engine/director.ts` | Crossfades, Auto Drift, sleep timer |
+| `src/engine/presets.ts` | Preset definitions |
+| `src/engine/settings.ts` | Saving, validating and exporting settings |
+| `src/engine/noise.ts` | Shared, pre-generated noise loops |
+| `src/engine/hits.ts` | Renders mechanical hits from recipes |
+| `src/engine/recipes.ts` | Hit recipes measured from real recordings |
+| `src/engine/samples.ts` | Optional sample loading |
+| `src/engine/random.ts` | Random helpers and the slow random walk |
+| `src/engine/recorder.ts` | Recording live and rendering to a file |
+| `src/lib/console.svelte.ts` | The bridge from the engine to the console: change signal, log, lamps |
+| `src/App.svelte`, `src/lib/` | Console layout, knobs, keys, room plan, system log, diagnostics |
+| `public/samples/` | Recordings and their manifest |
 
 ## Samples
 
-Most machines play real recordings from `samples/`, listed in
-`samples/manifest.json`. They are optional: if a layer has no samples, it falls
+Most machines play real recordings from `public/samples/`, listed in
+`public/samples/manifest.json`. They are optional: if a layer has no samples, it falls
 back to its synthesized sound, and the app works with the folder removed.
 
 Each manifest key is a layer, holding a list of files. For layers with a choice
-of machine, `model` is an id from that layer's `models` in `js/config.js`.
+of machine, `model` is an id from that layer's `models` in `src/engine/config.ts`.
 
 | Layer | `kind` values |
 | --- | --- |
@@ -115,7 +116,7 @@ of machine, `model` is an id from that layer's `models` in `js/config.js`.
 | `printer` | `line`, one whole printed line per file |
 | `modem` | `handshake`, `data` |
 | `signal` | `morse`, `data`, `carrier`, `time` (with its `mhz`), `broadcast` (with `speaker` and its words in `text`; `lazy` files load when first played) |
-| `power` | the sounds of the power sequence, named in `js/power.js` |
+| `power` | the sounds of the power sequence, named in `src/engine/power.ts` |
 | `hull` | `tick`, `creak` |
 | `antenna` | `motor` |
 | `thrusters` | `puff` |
@@ -172,8 +173,8 @@ voices are synthetic; confirm the Kokoro-82M terms before any commercial use.
 
 ### Reference recordings
 
-The synthesized hits in `js/recipes.js` and much of the rhythm and timing in
-`js/config.js` were measured from these CC0 recordings. Their audio is not
+The synthesized hits in `src/engine/recipes.ts` and much of the rhythm and timing in
+`src/engine/config.ts` were measured from these CC0 recordings. Their audio is not
 included.
 
 - Drives: [Conner CFS420A](https://freesound.org/s/155882/) by Klerrp,
