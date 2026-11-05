@@ -711,9 +711,9 @@ export const CONFIG = {
       label: 'RECEIVER',
       defaultLevel: 0.5,
       maxGain: 1,
+      position: { pan: 0.36, dist: 0.82 }, // a set murmuring at the back of the capsule
 
       staticLevel: 0.13,
-      staticWidth: 0.6, // stereo spread of the static
       // The receiver stays quiet until it has something to do.
       squelch: {
         closed: 0.03, // static level while idle: 0 is silent, 1 is fully open
@@ -722,7 +722,6 @@ export const CONFIG = {
         tailSec: { min: 0.4, max: 1.6 }, // stays open this long after activity
       },
       crackleGain: 0.045,
-      wander: { min: -0.75, max: 0.75, tauSec: 37 }, // slow pan of tones and crackle
 
       channel: {
         bottomHz: 280,

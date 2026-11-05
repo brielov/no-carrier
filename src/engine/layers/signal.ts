@@ -52,14 +52,18 @@ const dial = ({ min, max }: Range): string => `${rand(min, max).toFixed(3)} MHz`
 
 // The receiver: static in a hard-edged channel, slow fading, crackle and
 // scanning. Morse, teleprinter, carriers and broadcasts are layers of their own
-// (see radio.js) with their own controls, but they all play through this one
+// (see radio.ts) with their own controls, but they all play through this one
 // receiver, so they share its channel, fading and squelch as on a real set.
+//
+// It is a set in the room with one small speaker: everything it plays comes
+// out of a single point you place on the room plan.
 //
 // Each signal method takes the `part` that asked for it: that layer's output
 // sets the level, and its lamp is the one that blinks.
 export class SignalLayer extends Layer<LayerConfigs['signal']> {
   static override readonly id = 'signal';
-  static override readonly bus = 'outside';
+  static override readonly bus = 'machine';
+  static override readonly placed = true;
   static override readonly triggerLabels = ['SCAN'];
 
   presence!: GainNode;
@@ -72,9 +76,16 @@ export class SignalLayer extends Layer<LayerConfigs['signal']> {
   centre!: number;
   onAir?: boolean;
 
+  constructor(...args: ConstructorParameters<typeof Layer>) {
+    super(...args);
+    // One speaker: fold everything to mono before it is placed in the room.
+    this.mains.channelCount = 1;
+    this.mains.channelCountMode = 'explicit';
+  }
+
   override start(): void {
     const { ctx, cfg, noise } = this;
-    const { channel, staticLevel, crackleGain, fading, slowFading, signalFading, signalFadingMotion, wander, scan } = cfg;
+    const { channel, staticLevel, crackleGain, fading, slowFading, signalFading, signalFadingMotion, scan } = cfg;
 
     // Signals: fading and the Signal macro, then straight to this layer's
     // power switch. The receiver's own level knob does not touch them.
@@ -95,23 +106,15 @@ export class SignalLayer extends Layer<LayerConfigs['signal']> {
     this.squelch.connect(this.output);
     this.openUntil = 0;
 
-    // Static, separate left and right, so it stays wide.
-    [-cfg.staticWidth, cfg.staticWidth].forEach((pan, side) => {
-      const panner = new StereoPannerNode(ctx, { pan });
-      panner.connect(this.squelch);
-      const amp = new GainNode(ctx, { gain: staticLevel });
-      noise.loop('white', side).connect(amp).connect(this.channel(panner));
-    });
+    const hiss = new GainNode(ctx, { gain: staticLevel });
+    noise.loop('white').connect(hiss).connect(this.channel(this.squelch));
 
-    // Everything with a position moves slowly across the sky.
     // Signals fade on their way through the ionosphere; the receiver's own
     // static does not, so this sits on the signals alone.
     const skyFade = new GainNode(ctx);
-    const panner = new StereoPannerNode(ctx);
-    panner.connect(skyFade).connect(fade);
-    this.drift(panner.pan, wander);
+    skyFade.connect(fade);
     this.drift(skyFade.gain, signalFading, toGain, signalFadingMotion);
-    this.sky = this.channel(panner);
+    this.sky = this.channel(skyFade);
     // Scan whistles are the receiver's own, so they follow its level knob.
     this.scanIn = new GainNode(ctx, { gain: this.targetGain() });
     this.scanIn.connect(this.sky);
@@ -129,6 +132,12 @@ export class SignalLayer extends Layer<LayerConfigs['signal']> {
   override applyGain(): void {
     super.applyGain();
     this.scanIn?.gain.setTargetAtTime(this.targetGain(), this.ctx.currentTime, this.engine.cfg.engine.knobTc);
+  }
+
+  // On the machine bus for the room sound, but the receiver is not one of the
+  // computers: Activity leaves its scanning alone.
+  override rateScale(): number {
+    return super.rateScale() / this.macroScale('activity');
   }
 
   part(id: string): Layer {
